@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="#0d132e"
+        android:background="@drawable/buttonround"
         android:fontFamily="monospace"
         android:onClick="SelectCategory"
         android:padding="20dp"
