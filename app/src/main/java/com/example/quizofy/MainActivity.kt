@@ -17,21 +17,17 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
     }
-
    fun startQuiz1(view: View){
        val button=findViewById<Button>(R.id.c1)
        val intent=Intent(this,QuizCategory1::class.java)
        startActivity(intent)
    }
-
     fun startQuiz2(view: View){
         val button=findViewById<Button>(R.id.c2)
         val intent=Intent(this,QuizCategory2::class.java)
         startActivity(intent)
     }
-
     fun startQuiz3(view: View){
         val button=findViewById<Button>(R.id.c3)
         val intent=Intent(this,QuizCategory3::class.java)

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Main2ActivityIntroScreen"></activity>
         <activity android:name=".QuizCategory10" />
         <activity android:name=".QuizCategory9" />
@@ -20,7 +21,7 @@
         <activity android:name=".QuizCategory3" />
         <activity android:name=".QuizCategory2" />
         <activity android:name=".QuizCategory1" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".splashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
