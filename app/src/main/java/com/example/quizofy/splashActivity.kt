@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 
 class splashActivity : AppCompatActivity() {
-    private val DelaySplash: Long = 1000
+    private val DelaySplash: Long = 10000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
