@@ -8,6 +8,7 @@
     android:background="@drawable/gradient">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -26,41 +27,22 @@
 
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="2dp"
-        android:text="Score"
-        android:textColor="@android:color/white"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
-
-    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_marginTop="68dp"
-        android:padding="2dp"
-        android:text="Time:30.00"
+        android:padding="5dp"
+        android:text="Time:00.30"
         android:textColor="@android:color/white"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.145" />
 
     <TextView
         android:id="@+id/textView5"
@@ -73,10 +55,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintVertical_bias="0.424"
+        android:padding="10dp"/>
 
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/radioButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option1"
@@ -106,7 +89,7 @@
         app:layout_constraintVertical_bias="0.649" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radioButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option3"
@@ -121,7 +104,7 @@
         app:layout_constraintVertical_bias="0.709" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/radioButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option4"
@@ -152,19 +135,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.908" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="404dp"
-        android:layout_height="11dp"
-        android:layout_marginStart="16dp"
-        android:background="@android:color/holo_orange_light"
+
+    <Button
+        android:id="@+id/next1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:padding="10dp"
+        android:text="NEXT->"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.267" />
+
+    <Button
+        android:id="@+id/startTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:padding="10dp"
+        android:text="START!"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.267" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
