@@ -27,6 +27,10 @@ class QuizCategory1 : AppCompatActivity() {
                 startTime.visibility=View.INVISIBLE
                 startClicked1()
         }
+
+        submitButton1.setOnClickListener {
+            resultKaIntent1()
+        }
     }
 
     fun startClicked1() {
@@ -99,6 +103,11 @@ class QuizCategory1 : AppCompatActivity() {
         else {
             radioButton14.isChecked=false
         }
+    }
+
+    fun resultKaIntent1(){
+        val intent =Intent(this,ResultActivity::class.java)
+        startActivity(intent)
     }
 
 

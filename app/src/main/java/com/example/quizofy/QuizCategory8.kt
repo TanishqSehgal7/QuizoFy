@@ -1,5 +1,6 @@
 package com.example.quizofy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,6 +8,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category2.*
+import kotlinx.android.synthetic.main.activity_quiz_category7.*
 import kotlinx.android.synthetic.main.activity_quiz_category8.*
 
 class QuizCategory8 : AppCompatActivity() {
@@ -18,6 +20,10 @@ lateinit var timeCount:CountDownTimer
         startTime8.setOnClickListener {
             startTime8.visibility=View.INVISIBLE
             startClicked8()
+        }
+
+        submitButton8.setOnClickListener {
+            resultKaIntent8()
         }
     }
     fun startClicked8() {
@@ -90,6 +96,11 @@ lateinit var timeCount:CountDownTimer
         else {
             radioButton84.isChecked=false
         }
+    }
+
+    fun resultKaIntent8(){
+        val intent = Intent(this,ResultActivity::class.java)
+        startActivity(intent)
     }
 
 }

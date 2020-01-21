@@ -68,5 +68,4 @@ class MainActivity : AppCompatActivity(){
         val intent=Intent(this,QuizCategory10::class.java)
         startActivity(intent)
     }
-
 }

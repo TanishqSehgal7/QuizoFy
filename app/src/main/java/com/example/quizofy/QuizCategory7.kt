@@ -1,5 +1,6 @@
 package com.example.quizofy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -19,6 +20,10 @@ lateinit var timeCount:CountDownTimer
         startTime7.setOnClickListener {
             startTime7.visibility = View.INVISIBLE
             startClicked7()
+        }
+
+        submitButton7.setOnClickListener {
+            resultKaIntent7()
         }
     }
 
@@ -92,5 +97,10 @@ lateinit var timeCount:CountDownTimer
         else {
             radioButton74.isChecked=false
         }
+    }
+
+    fun resultKaIntent7(){
+        val intent = Intent(this,ResultActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Main2ActivityIntroScreen"></activity>
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Main2ActivityIntroScreen" />
         <activity android:name=".QuizCategory10" />
         <activity android:name=".QuizCategory9" />
         <activity android:name=".QuizCategory8" />
@@ -29,4 +30,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
