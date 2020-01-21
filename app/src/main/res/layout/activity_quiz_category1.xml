@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuizCategory1"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/textView2"
@@ -56,10 +57,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.424"
-        android:padding="10dp"/>
+        android:padding="20dp"/>
 
     <RadioButton
-        android:id="@+id/radioButton1"
+        android:id="@+id/radioButton11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option1"
@@ -74,7 +75,7 @@
         app:layout_constraintVertical_bias="0.59" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/radioButton12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option2"
@@ -89,7 +90,7 @@
         app:layout_constraintVertical_bias="0.649" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/radioButton13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option3"
@@ -104,7 +105,7 @@
         app:layout_constraintVertical_bias="0.709" />
 
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/radioButton14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option4"
@@ -119,7 +120,7 @@
         app:layout_constraintVertical_bias="0.771" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/submitButton1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuizCategory5"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="SPORTS"
+        android:text="TECHNOLOGY"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -54,10 +55,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.424"
-        android:padding="10dp"/>
+        android:padding="20dp"/>
 
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/radioButton51"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option1"
@@ -72,7 +73,7 @@
         app:layout_constraintVertical_bias="0.59" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/radioButton52"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option2"
@@ -87,7 +88,7 @@
         app:layout_constraintVertical_bias="0.649" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radioButton53"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option3"
@@ -102,7 +103,7 @@
         app:layout_constraintVertical_bias="0.709" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/radioButton54"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Option4"
@@ -117,7 +118,7 @@
         app:layout_constraintVertical_bias="0.771" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/submitButton5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"

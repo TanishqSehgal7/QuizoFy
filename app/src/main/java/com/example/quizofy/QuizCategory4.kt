@@ -6,42 +6,92 @@ import android.os.CountDownTimer
 import android.view.View
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
+import kotlinx.android.synthetic.main.activity_quiz_category10.*
+import kotlinx.android.synthetic.main.activity_quiz_category2.*
 import kotlinx.android.synthetic.main.activity_quiz_category4.*
 
 class QuizCategory4 : AppCompatActivity() {
-
+lateinit var timeCount:CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category4)
-        startTime4.setOnClickListener {
-            object : CountDownTimer(30000, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    textView3.setText("Time:00:" + millisUntilFinished / 1000)
-                    startTime4.visibility = View.INVISIBLE
-                }
 
-                override fun onFinish() {
-                    textView3.setText("Time Over!")
-                    next4.setOnClickListener {
-                        resetTimerforNextQuestion4()
-                    }
+        startTime4.setOnClickListener {
+            startTime4.visibility=View.INVISIBLE
+            startClicked4()
+        }
+
+    }
+
+    fun startClicked4() {
+
+        timeCount =  object : CountDownTimer(10000, 1000) {
+            override fun onTick(milisUntilFinished: Long) {
+                textView3.text = ("00:" + (1+(milisUntilFinished / 1000)))
+
+                if (radioButton41.isChecked||radioButton42.isChecked||radioButton43.isChecked||radioButton44.isChecked) {
+                    optionupdate()
                 }
-            }.start()
+                else {
+                    next4.setOnClickListener {
+                        next4.visibility=View.INVISIBLE
+                        resetTimer()
+                        optionupdate()
+                        next4.visibility=View.VISIBLE
+                    }
+
+                }
+            }
+            override fun onFinish() {
+                textView3.text = "Time Over!!"
+
+                next4.setOnClickListener {
+                    optionupdate()
+
+                }
+            }
+        }.start()
+    }
+
+    fun resetTimer(){
+        timeCount.start()
+    }
+
+
+    fun optionupdate() {
+        if (radioButton41.isChecked || radioButton42.isChecked || radioButton43.isChecked || radioButton44.isChecked) {
+            radioButton41.isEnabled = false
+            radioButton42.isEnabled = false
+            radioButton43.isEnabled = false
+            radioButton44.isEnabled = false
+            next4.setOnClickListener {
+                resetTimer()
+                resetoptions()
+                radioButton41.isEnabled = true
+                radioButton42.isEnabled = true
+                radioButton43.isEnabled = true
+                radioButton44.isEnabled = true
+            }
+
+        } else {
+            next4.setOnClickListener {
+                resetTimer()
+            }
         }
     }
 
-    fun resetTimerforNextQuestion4(){
-        object : CountDownTimer(30000,1000){
-            override fun onTick(milisUntilFinished: Long) {
-                textView3.setText("Time:00:" + milisUntilFinished/1000)
-                next4.visibility=View.INVISIBLE
-
-            }
-
-            override fun onFinish() {
-                textView3.setText("Time Over!")
-                next4.visibility=View.VISIBLE
-            }
-        }.start()
+    fun resetoptions(){
+        if(radioButton41.isChecked){
+            radioButton41.isChecked=false
+        }
+        else if (radioButton42.isChecked){
+            radioButton42.isChecked=false
+        }
+        else if (radioButton43.isChecked){
+            radioButton43.isChecked=false
+        }
+        else {
+            radioButton44.isChecked=false
+        }
     }
 }
