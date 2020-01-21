@@ -19,5 +19,6 @@ class ResultActivity : AppCompatActivity() {
 
     fun exitTointroScreen(){
         val intent =Intent(this,Main2ActivityIntroScreen::class.java)
+        startActivity(intent)
     }
 }
