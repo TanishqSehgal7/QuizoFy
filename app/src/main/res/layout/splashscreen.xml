@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="181dp"
-        android:layout_height="161dp"
+        android:layout_width="239dp"
+        android:layout_height="245dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="150dp"
-        android:background="@android:color/holo_orange_dark"
+
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/multicoloredquestionmarkl" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:fontFamily="cursive"
         android:text="QuizoFy"
         android:textColor="@android:color/white"
-        android:textSize="50dp"
+        android:textSize="60dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

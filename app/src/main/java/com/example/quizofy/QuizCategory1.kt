@@ -1,20 +1,14 @@
 package com.example.quizofy
 
 import android.content.Intent
-import android.content.IntentSender
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.View
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
-import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category2.*
-import java.util.*
+import kotlinx.android.synthetic.main.activity_result.*
 
 class QuizCategory1 : AppCompatActivity() {
     lateinit var timeCount :CountDownTimer
@@ -31,6 +25,7 @@ class QuizCategory1 : AppCompatActivity() {
         submitButton1.setOnClickListener {
             resultKaIntent1()
         }
+
     }
 
     fun startClicked1() {
@@ -74,14 +69,14 @@ class QuizCategory1 : AppCompatActivity() {
             radioButton12.isEnabled = false
             radioButton13.isEnabled = false
             radioButton14.isEnabled = false
-            next1.setOnClickListener {
-                resetTimer()
-                resetoptions()
-                radioButton11.isEnabled = true
-                radioButton12.isEnabled = true
-                radioButton13.isEnabled = true
-                radioButton14.isEnabled = true
-            }
+           next1.setOnClickListener {
+               resetTimer()
+               resetoptions()
+               radioButton11.isEnabled = true
+               radioButton12.isEnabled = true
+               radioButton13.isEnabled = true
+               radioButton14.isEnabled = true
+           }
 
         } else {
             next1.setOnClickListener {
