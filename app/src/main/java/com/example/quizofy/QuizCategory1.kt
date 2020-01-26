@@ -17,8 +17,16 @@ class QuizCategory1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
 
+        radioButton11.isEnabled=false
+        radioButton12.isEnabled=false
+        radioButton13.isEnabled=false
+        radioButton14.isEnabled=false
 
         startTime.setOnClickListener {
+                radioButton11.isEnabled=true
+                radioButton12.isEnabled=true
+                radioButton13.isEnabled=true
+                radioButton14.isEnabled=true
                 startTime.visibility=View.INVISIBLE
                 startClicked1()
         }
@@ -51,10 +59,17 @@ class QuizCategory1 : AppCompatActivity() {
             }
             override fun onFinish() {
                 textView3.text = "Time Over!!"
-
+                radioButton11.isEnabled=false
+                radioButton12.isEnabled=false
+                radioButton13.isEnabled=false
+                radioButton14.isEnabled=false
                 next1.setOnClickListener {
+                    Toast.makeText(this@QuizCategory1,"Press Next again to reset the timer",Toast.LENGTH_SHORT).show()
                     optionupdate()
-
+                    radioButton11.isEnabled=true
+                    radioButton12.isEnabled=true
+                    radioButton13.isEnabled=true
+                    radioButton14.isEnabled=true
                 }
             }
         }.start()
@@ -102,10 +117,17 @@ class QuizCategory1 : AppCompatActivity() {
         }
     }
 
+//    fun ifALllOptionsAreTogetherClicked(){
+//        if(radioButton11.isChecked && radioButton12.isChecked && radioButton13.isChecked || radioButton14.isChecked){
+//
+//        }
+//    }
+
     fun resultKaIntent1(){
         val intent =Intent(this,ResultActivity::class.java)
         startActivity(intent)
     }
+
 
 
 }

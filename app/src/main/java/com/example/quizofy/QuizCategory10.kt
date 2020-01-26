@@ -17,7 +17,16 @@ lateinit var timeCount:CountDownTimer
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category10)
 
+        radioButton01.isEnabled=false
+        radioButton02.isEnabled=false
+        radioButton03.isEnabled=false
+        radioButton04.isEnabled=false
+
         startTime10.setOnClickListener {
+            radioButton01.isEnabled=true
+            radioButton02.isEnabled=true
+            radioButton03.isEnabled=true
+            radioButton04.isEnabled=true
             startTime10.visibility=View.INVISIBLE
             startClicked10()
         }
@@ -51,9 +60,17 @@ lateinit var timeCount:CountDownTimer
             }
             override fun onFinish() {
                 textView3.text = "Time Over!!"
-
+                radioButton01.isEnabled=false
+                radioButton02.isEnabled=false
+                radioButton03.isEnabled=false
+                radioButton04.isEnabled=false
                 next10.setOnClickListener {
+                    Toast.makeText(this@QuizCategory10,"Press Next again to reset timer",Toast.LENGTH_SHORT).show()
                     optionupdate()
+                    radioButton01.isEnabled=true
+                    radioButton02.isEnabled=true
+                    radioButton03.isEnabled=true
+                    radioButton04.isEnabled=true
 
                 }
             }
