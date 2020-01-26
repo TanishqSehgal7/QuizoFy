@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_result.*
@@ -24,6 +25,7 @@ class QuizCategory1 : AppCompatActivity() {
 
         submitButton1.setOnClickListener {
             resultKaIntent1()
+            Toast.makeText(this,"Your Result",Toast.LENGTH_SHORT).show()
         }
 
     }
