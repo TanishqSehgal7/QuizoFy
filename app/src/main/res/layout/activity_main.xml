@@ -40,6 +40,7 @@
              android:textSize="30dp"
              android:drawableLeft="@android:drawable/btn_star"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:background="@drawable/buttonroundforcategories"
              android:layout_margin="10dp"
              android:onClick="startQuiz1"
@@ -54,6 +55,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz2"
              android:padding="10dp"/>
@@ -67,6 +69,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz3"
              android:padding="10dp"/>
@@ -80,6 +83,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz4"
              android:padding="10dp"/>
@@ -93,6 +97,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz5"
              android:padding="10dp"/>
@@ -106,6 +111,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz6"
              android:padding="10dp"/>
@@ -119,6 +125,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz7"
              android:padding="10dp"/>
@@ -132,6 +139,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz8"
              android:padding="10dp"/>
@@ -145,6 +153,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz9"
              android:padding="10dp"/>
@@ -158,6 +167,7 @@
              android:drawableLeft="@android:drawable/btn_star"
              android:background="@drawable/buttonroundforcategories"
              android:drawableTint="@android:color/holo_orange_light"
+             android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
              android:onClick="startQuiz10"
              android:padding="10dp"/>

@@ -1,5 +1,6 @@
 package com.example.quizofy
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
@@ -17,13 +18,27 @@ class AnimationController:AppCompatActivity() {
     }
 
 //    fun CategorybuttonClickEffect(button:View){
-//
-//        intro.setOnTouchListener{ v,event->
+
+//       intro.setOnTouchListener{ v,event->
 //            when(event.action){
-//                MotionEvent.ACTION_BUTTON_PRESS->{
-//                    v.background.setColorFilter()
+//               MotionEvent.ACTION_BUTTON_PRESS->{
+//                   v.background.colorFilter()
 //                }
 //            }
+//        }
+
+//        intro.setOnTouchListener { v, event ->
+//            when (event.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    v.background.setColorFilter(-0x1f0b8adf, PorterDuff.Mode.SRC_ATOP)
+//                    v.invalidate()
+//                }
+//                MotionEvent.ACTION_UP -> {
+//                    v.background.clearColorFilter()
+//                    v.invalidate()
+//                }
+//            }
+//            false
 //        }
 //    }
 }

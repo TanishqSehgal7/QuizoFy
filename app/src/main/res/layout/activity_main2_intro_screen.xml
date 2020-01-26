@@ -39,6 +39,7 @@
         android:textFontWeight="200000"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -71,6 +71,7 @@
         android:textColor="@android:color/black"
         android:textSize="40dp"
         android:textStyle="bold"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
