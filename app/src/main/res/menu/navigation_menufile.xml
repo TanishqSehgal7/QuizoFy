@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/Score"
+        android:title="Scores"
+        android:icon="@drawable/scoreboard"/>
+
+    <item
+        android:id="@+id/notify"
+        android:title="Notifications"
+        android:icon="@drawable/notification" />
+    <item
+        android:id="@+id/aboutApp"
+        android:title="About Us"
+        android:icon="@drawable/aboutus"/>
+</menu>

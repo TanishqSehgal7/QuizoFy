@@ -35,7 +35,6 @@ class QuizCategory1 : AppCompatActivity() {
             resultKaIntent1()
             Toast.makeText(this,"Your Result",Toast.LENGTH_SHORT).show()
         }
-
     }
 
     fun startClicked1() {
