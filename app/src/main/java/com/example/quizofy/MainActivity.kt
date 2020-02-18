@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(){
                     Toast.makeText(this, "Navigating to Home", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    finish()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.notify -> {
@@ -46,6 +45,7 @@ class MainActivity : AppCompatActivity(){
             }
             false
         }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
