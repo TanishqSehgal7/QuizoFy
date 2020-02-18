@@ -24,6 +24,7 @@ class Main2ActivityIntroScreen : AppCompatActivity() {
         runAnimationZoom()
             intro.setOnClickListener {
                 startIntent()
+                finish()
             }
 
     }

@@ -125,6 +125,7 @@ class QuizCategory1 : AppCompatActivity() {
     fun resultKaIntent1(){
         val intent =Intent(this,ResultActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
 

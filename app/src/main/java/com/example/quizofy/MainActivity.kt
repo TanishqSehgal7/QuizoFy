@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(){
                     Toast.makeText(this, "Navigating to Home", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.notify -> {
@@ -56,24 +57,28 @@ class MainActivity : AppCompatActivity(){
        val button=findViewById<Button>(R.id.c1)
        val intent=Intent(this,QuizCategory1::class.java)
        startActivity(intent)
+       finish()
        Toast.makeText(this,"Art and Literature",Toast.LENGTH_SHORT).show()
    }
     fun startQuiz2(view: View){
         val button=findViewById<Button>(R.id.c2)
         val intent=Intent(this,QuizCategory2::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Geography",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz3(view: View){
         val button=findViewById<Button>(R.id.c3)
         val intent=Intent(this,QuizCategory3::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"General Knowledge",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz4(view: View){
         val button=findViewById<Button>(R.id.c4)
         val intent=Intent(this,QuizCategory4::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"History",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz5(view: View){
@@ -86,30 +91,35 @@ class MainActivity : AppCompatActivity(){
         val button=findViewById<Button>(R.id.c6)
         val intent=Intent(this,QuizCategory6::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Sports",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz7(view: View){
         val button=findViewById<Button>(R.id.c7)
         val intent=Intent(this,QuizCategory7::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Entertainment",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz8(view: View){
         val button=findViewById<Button>(R.id.c8)
         val intent=Intent(this,QuizCategory8::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Music",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz9(view: View){
         val button=findViewById<Button>(R.id.c9)
         val intent=Intent(this,QuizCategory9::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Sneaker Culture",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz10(view: View){
         val button=findViewById<Button>(R.id.c10)
         val intent=Intent(this,QuizCategory10::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Politics",Toast.LENGTH_SHORT).show()
     }
 

@@ -120,6 +120,7 @@ lateinit var timeCount:CountDownTimer
     fun resultKaIntent8(){
         val intent = Intent(this,ResultActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
 }
