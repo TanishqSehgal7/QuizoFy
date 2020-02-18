@@ -16,6 +16,4 @@
         android:textColor="@android:color/black"
         android:textSize="50dp"
         android:background="@android:color/holo_orange_light" />
-
-
 </FrameLayout>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main2ActivityIntroScreen"
-    android:background="@drawable/introbg">
+    android:background="@drawable/introbg"
+    android:id="@+id/introLayout">
 
     <TextView
         android:id="@+id/textView4"

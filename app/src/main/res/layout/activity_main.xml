@@ -193,4 +193,10 @@
           app:labelVisibilityMode="labeled"
           app:itemBackground="@android:color/white"/>
 
+   <FrameLayout
+       android:id="@+id/frameLayout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_above="@+id/bottomNavigation"/>
+
 </RelativeLayout>

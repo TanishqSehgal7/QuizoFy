@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,9 +18,38 @@ const val EXTRA_MESSAGE = "com.example.quizofy.MESSEGE"
 
 class MainActivity : AppCompatActivity(){
 
+    private val mOnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    Toast.makeText(this, "Navigating to Home", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.notify -> {
+                    Toast.makeText(this, "Showing Notifications", Toast.LENGTH_SHORT).show()
+                    switchbwtweenfragments(NotificationsFragment())
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.Score -> {
+                    Toast.makeText(this, "Your Scores", Toast.LENGTH_SHORT).show()
+                    switchbwtweenfragments(ScoreFragment())
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.aboutApp -> {
+                    Toast.makeText(this, "Developer Details", Toast.LENGTH_SHORT).show()
+                    switchbwtweenfragments(AboutAppFragment())
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
     }
    fun startQuiz1(view: View){
@@ -81,4 +112,14 @@ class MainActivity : AppCompatActivity(){
         startActivity(intent)
         Toast.makeText(this,"Politics",Toast.LENGTH_SHORT).show()
     }
+
+    fun switchbwtweenfragments(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.containFragment, fragment)
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
+
 }
