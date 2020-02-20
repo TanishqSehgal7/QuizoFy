@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".QuizCategory4"
     android:background="@drawable/gradient"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:id="@+id/QC4">
 
     <TextView
         android:layout_width="match_parent"

@@ -15,6 +15,10 @@ class splashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splashscreen)
 
+//        runAnimationOnIconOfSplashScreen()
+        runAnimationOnTextOfSplashScreen()
+        runRotationAnimation()
+
         Handler().postDelayed(
             {
                 val intent=Intent(this,Main2ActivityIntroScreen::class.java)
@@ -25,7 +29,21 @@ class splashActivity : AppCompatActivity() {
         ,DelaySplash)
     }
 
+//    fun runAnimationOnIconOfSplashScreen(){
+//        val animation=AnimationUtils.loadAnimation(this,R.anim.slide_down)
+//        imageView.startAnimation(animation)
+//
+//    }
 
+    fun runAnimationOnTextOfSplashScreen(){
+        val animation2=AnimationUtils.loadAnimation(this,R.anim.fadein)
+        tvsplash.startAnimation(animation2)
+    }
+
+    fun runRotationAnimation(){
+        val animation3=AnimationUtils.loadAnimation(this,R.anim.rorate)
+        imageView.startAnimation(animation3)
+    }
 
 
 }

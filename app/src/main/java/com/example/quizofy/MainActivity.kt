@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,6 +13,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_quiz_category1.*
+import kotlinx.android.synthetic.main.activity_quiz_category10.*
+import kotlinx.android.synthetic.main.activity_quiz_category2.*
+import kotlinx.android.synthetic.main.activity_quiz_category3.*
+import kotlinx.android.synthetic.main.activity_quiz_category4.*
+import kotlinx.android.synthetic.main.activity_quiz_category5.*
+import kotlinx.android.synthetic.main.activity_quiz_category6.*
+import kotlinx.android.synthetic.main.activity_quiz_category7.*
+import kotlinx.android.synthetic.main.activity_quiz_category8.*
+import kotlinx.android.synthetic.main.activity_quiz_category9.*
 
 const val EXTRA_MESSAGE = "com.example.quizofy.MESSEGE"
 
@@ -26,6 +37,7 @@ class MainActivity : AppCompatActivity(){
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     return@OnNavigationItemSelectedListener true
+                    finish()
                 }
                 R.id.notify -> {
                     Toast.makeText(this, "Showing Notifications", Toast.LENGTH_SHORT).show()
@@ -50,6 +62,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        runAnimationOnCategoryTv()
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
     }
@@ -85,6 +98,7 @@ class MainActivity : AppCompatActivity(){
         val button=findViewById<Button>(R.id.c5)
         val intent=Intent(this,QuizCategory5::class.java)
         startActivity(intent)
+        finish()
         Toast.makeText(this,"Technology",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz6(view: View){
@@ -127,9 +141,25 @@ class MainActivity : AppCompatActivity(){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.containFragment, fragment)
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+        fragmentTransaction.isAddToBackStackAllowed
+
     }
 
+    fun runAnimationOnCategoryTv(){
+        val animCategory=AnimationUtils.loadAnimation(this,R.anim.fadein)
+        categorytv.startAnimation(animCategory)
+        c1.startAnimation(animCategory)
+        c2.startAnimation(animCategory)
+        c3.startAnimation(animCategory)
+        c4.startAnimation(animCategory)
+        c5.startAnimation(animCategory)
+        c6.startAnimation(animCategory)
+        c7.startAnimation(animCategory)
+        c8.startAnimation(animCategory)
+        c9.startAnimation(animCategory)
+        c10.startAnimation(animCategory)
+        bottomNavigation.startAnimation(animCategory)
 
+    }
 }

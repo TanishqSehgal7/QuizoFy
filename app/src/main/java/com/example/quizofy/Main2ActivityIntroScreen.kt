@@ -20,11 +20,10 @@ class Main2ActivityIntroScreen : AppCompatActivity() {
         setContentView(R.layout.activity_main2_intro_screen)
 
         Toast.makeText(this,"Tap the button to browse categories",Toast.LENGTH_SHORT).show()
-        runAnimationSlideDown()
+        runAnimationFadeout()
         runAnimationZoom()
             intro.setOnClickListener {
                 startIntent()
-                finish()
             }
 
     }
@@ -39,8 +38,8 @@ class Main2ActivityIntroScreen : AppCompatActivity() {
         textView4.startAnimation(animation1)
     }
 
-    fun runAnimationSlideDown(){
-        val animation2=AnimationUtils.loadAnimation(this,R.anim.slide_down)
+    fun runAnimationFadeout(){
+        val animation2=AnimationUtils.loadAnimation(this,R.anim.fadein)
         introLayout.startAnimation(animation2)
     }
 
