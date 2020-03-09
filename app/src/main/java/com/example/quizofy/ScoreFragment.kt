@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 
 /**
  * A simple [Fragment] subclass.
@@ -18,7 +19,7 @@ class ScoreFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_score, container, false)
-    }
 
+    }
 
 }

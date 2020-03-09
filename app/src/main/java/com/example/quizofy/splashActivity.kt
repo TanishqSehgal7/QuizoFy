@@ -9,13 +9,11 @@ import kotlinx.android.synthetic.main.activity_main2_intro_screen.*
 import kotlinx.android.synthetic.main.splashscreen.*
 
 class splashActivity : AppCompatActivity() {
-    private val DelaySplash: Long = 3000
+    private val DelaySplash: Long = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splashscreen)
-
-//        runAnimationOnIconOfSplashScreen()
         runAnimationOnTextOfSplashScreen()
         runRotationAnimation()
 

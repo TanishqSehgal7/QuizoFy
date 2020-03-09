@@ -1,6 +1,8 @@
 package com.example.quizofy
 
 import android.content.Intent
+import android.graphics.Insets.add
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
@@ -36,8 +38,8 @@ class MainActivity : AppCompatActivity(){
                     Toast.makeText(this, "Navigating to Home", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    return@OnNavigationItemSelectedListener true
                     finish()
+                    return@OnNavigationItemSelectedListener true
                 }
                 R.id.notify -> {
                     Toast.makeText(this, "Showing Notifications", Toast.LENGTH_SHORT).show()
@@ -141,14 +143,14 @@ class MainActivity : AppCompatActivity(){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.containFragment, fragment)
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        fragmentTransaction.commit()
         fragmentTransaction.isAddToBackStackAllowed
+        fragmentTransaction.commit()
 
     }
 
     fun runAnimationOnCategoryTv(){
         val animCategory=AnimationUtils.loadAnimation(this,R.anim.fadein)
-        categorytv.startAnimation(animCategory)
+        //categorytv.startAnimation(animCategory)
         c1.startAnimation(animCategory)
         c2.startAnimation(animCategory)
         c3.startAnimation(animCategory)
@@ -162,4 +164,6 @@ class MainActivity : AppCompatActivity(){
         bottomNavigation.startAnimation(animCategory)
 
     }
+
+
 }

@@ -9,12 +9,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="App made by:\nTanishq Sehgal\nB.TECH (ECE)\nBharti Vidyapeeth's College Of Engineering (New Delhi)"
-        android:textColor="@android:color/black"
+        android:text="App made by:\n\nTanishq Sehgal\nB.TECH (ECE)\nBharti Vidyapeeth's College Of Engineering (New Delhi)"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         android:padding="10dp"
         android:gravity="center"
         android:textSize="30dp"
-        android:background="@android:color/holo_orange_light" />
+        android:background="@drawable/gradient" />
 
 </FrameLayout>
