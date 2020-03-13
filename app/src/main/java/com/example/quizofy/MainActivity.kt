@@ -1,5 +1,7 @@
 package com.example.quizofy
 
+import android.app.AlarmManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Insets.add
 import android.graphics.drawable.Drawable
@@ -104,6 +106,9 @@ class MainActivity : AppCompatActivity(){
         runAnimationOnCategoryTv()
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+        val alarmManager=getSystemService(Context.ALARM_SERVICE)
+
+
     }
    fun startQuiz1(view: View){
        val button=findViewById<Button>(R.id.c1)
@@ -191,6 +196,7 @@ class MainActivity : AppCompatActivity(){
         bottomNavigation.startAnimation(animCategory)
 
     }
+
 
 
 
