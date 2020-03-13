@@ -35,24 +35,61 @@ class MainActivity : AppCompatActivity(){
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    Toast.makeText(this, "Navigating to Home", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
+                    c1.isClickable=true
+                    c2.isClickable=true
+                    c3.isClickable=true
+                    c4.isClickable=true
+                    c5.isClickable=true
+                    c6.isClickable=true
+                    c7.isClickable=true
+                    c8.isClickable=true
+                    c9.isClickable=true
+                    c10.isClickable=true
                     startActivity(intent)
                     finish()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.notify -> {
-                    Toast.makeText(this, "Showing Notifications", Toast.LENGTH_SHORT).show()
+                    c1.isClickable=false
+                    c2.isClickable=false
+                    c3.isClickable=false
+                    c4.isClickable=false
+                    c5.isClickable=false
+                    c6.isClickable=false
+                    c7.isClickable=false
+                    c8.isClickable=false
+                    c9.isClickable=false
+                    c10.isClickable=false
                     switchbwtweenfragments(NotificationsFragment())
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.Score -> {
-                    Toast.makeText(this, "Your Scores", Toast.LENGTH_SHORT).show()
+                    c1.isClickable=false
+                    c2.isClickable=false
+                    c3.isClickable=false
+                    c4.isClickable=false
+                    c5.isClickable=false
+                    c6.isClickable=false
+                    c7.isClickable=false
+                    c8.isClickable=false
+                    c9.isClickable=false
+                    c10.isClickable=false
                     switchbwtweenfragments(ScoreFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.aboutApp -> {
-                    Toast.makeText(this, "Developer Details", Toast.LENGTH_SHORT).show()
+                    c1.isClickable=false
+                    c2.isClickable=false
+                    c3.isClickable=false
+                    c4.isClickable=false
+                    c5.isClickable=false
+                    c6.isClickable=false
+                    c7.isClickable=false
+                    c8.isClickable=false
+                    c9.isClickable=false
+                    c10.isClickable=false
                     switchbwtweenfragments(AboutAppFragment())
                     return@OnNavigationItemSelectedListener true
                 }
@@ -73,70 +110,60 @@ class MainActivity : AppCompatActivity(){
        val intent=Intent(this,QuizCategory1::class.java)
        startActivity(intent)
        finish()
-       Toast.makeText(this,"Art and Literature",Toast.LENGTH_SHORT).show()
    }
     fun startQuiz2(view: View){
         val button=findViewById<Button>(R.id.c2)
         val intent=Intent(this,QuizCategory2::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Geography",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz3(view: View){
         val button=findViewById<Button>(R.id.c3)
         val intent=Intent(this,QuizCategory3::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"General Knowledge",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz4(view: View){
         val button=findViewById<Button>(R.id.c4)
         val intent=Intent(this,QuizCategory4::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"History",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz5(view: View){
         val button=findViewById<Button>(R.id.c5)
         val intent=Intent(this,QuizCategory5::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Technology",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz6(view: View){
         val button=findViewById<Button>(R.id.c6)
         val intent=Intent(this,QuizCategory6::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Sports",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz7(view: View){
         val button=findViewById<Button>(R.id.c7)
         val intent=Intent(this,QuizCategory7::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Entertainment",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz8(view: View){
         val button=findViewById<Button>(R.id.c8)
         val intent=Intent(this,QuizCategory8::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Music",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz9(view: View){
         val button=findViewById<Button>(R.id.c9)
         val intent=Intent(this,QuizCategory9::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Sneaker Culture",Toast.LENGTH_SHORT).show()
     }
     fun startQuiz10(view: View){
         val button=findViewById<Button>(R.id.c10)
         val intent=Intent(this,QuizCategory10::class.java)
         startActivity(intent)
         finish()
-        Toast.makeText(this,"Politics",Toast.LENGTH_SHORT).show()
     }
 
     fun switchbwtweenfragments(fragment: Fragment) {
@@ -164,6 +191,7 @@ class MainActivity : AppCompatActivity(){
         bottomNavigation.startAnimation(animCategory)
 
     }
+
 
 
 }
