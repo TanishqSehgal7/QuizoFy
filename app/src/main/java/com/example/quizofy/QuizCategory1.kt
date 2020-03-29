@@ -1,21 +1,27 @@
 package com.example.quizofy
 
 import android.content.Intent
-import android.media.Image
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
-import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
-import kotlinx.android.synthetic.main.activity_result.*
 
 class QuizCategory1 : AppCompatActivity() {
+    var correct=0
+    var wrong=0
+    var score=0
+    var total=0
+    lateinit var ref:DatabaseReference
     lateinit var timeCount :CountDownTimer
+    lateinit var quesList: MutableList<Questions>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
+
 
         radioButton11.isEnabled=false
         radioButton12.isEnabled=false
@@ -23,12 +29,15 @@ class QuizCategory1 : AppCompatActivity() {
         radioButton14.isEnabled=false
 
         startTime.setOnClickListener {
+                getQuestion()
+                total++
                 radioButton11.isEnabled=true
                 radioButton12.isEnabled=true
                 radioButton13.isEnabled=true
                 radioButton14.isEnabled=true
                 startTime.visibility=View.INVISIBLE
                 startClicked1()
+//                checkCorrectorWrong()
         }
 
         submitButton1.setOnClickListener {
@@ -48,6 +57,7 @@ class QuizCategory1 : AppCompatActivity() {
                 }
                 else {
                     next1.setOnClickListener {
+//                        UpdateQuestion()
                         next1.visibility=View.INVISIBLE
                         resetTimer()
                         optionupdate()
@@ -64,12 +74,13 @@ class QuizCategory1 : AppCompatActivity() {
                 radioButton14.isEnabled=false
                 next1.setOnClickListener {
                     Toast.makeText(this@QuizCategory1,"Press Next again to reset the timer",Toast.LENGTH_SHORT).show()
-                    optionupdate()
                     radioButton11.isEnabled=true
                     radioButton12.isEnabled=true
                     radioButton13.isEnabled=true
                     radioButton14.isEnabled=true
+                    optionupdate()
                 }
+
             }
         }.start()
     }
@@ -104,23 +115,34 @@ class QuizCategory1 : AppCompatActivity() {
     fun resetoptions(){
         if(radioButton11.isChecked){
             radioButton11.isChecked=false
+            radioButton11.isEnabled=false
+            radioButton12.isEnabled=false
+            radioButton13.isEnabled=false
+            radioButton14.isEnabled=false
         }
         else if (radioButton12.isChecked){
             radioButton12.isChecked=false
+            radioButton11.isEnabled=false
+            radioButton12.isEnabled=false
+            radioButton13.isEnabled=false
+            radioButton14.isEnabled=false
+
         }
         else if (radioButton13.isChecked){
             radioButton13.isChecked=false
+            radioButton11.isEnabled=false
+            radioButton12.isEnabled=false
+            radioButton13.isEnabled=false
+            radioButton14.isEnabled=false
         }
         else {
             radioButton14.isChecked=false
+            radioButton11.isEnabled=false
+            radioButton12.isEnabled=false
+            radioButton13.isEnabled=false
+            radioButton14.isEnabled=false
         }
     }
-
-//    fun ifALllOptionsAreTogetherClicked(){
-//        if(radioButton11.isChecked && radioButton12.isChecked && radioButton13.isChecked || radioButton14.isChecked){
-//
-//        }
-//    }
 
     fun resultKaIntent1(){
         val intent =Intent(this,ResultActivity::class.java)
@@ -129,5 +151,89 @@ class QuizCategory1 : AppCompatActivity() {
     }
 
 
+    fun getQuestion(){
 
+//            if (total > 5) {
+//                val intent = Intent(this, ResultActivity::class.java)
+//                startActivity(intent)
+//            } else
+//    {
+        quesList = mutableListOf()
+        ref = FirebaseDatabase.getInstance().reference.child("quizofy-a163a").child("CATEGORIES") //------0error
+            .child("Art and Literature").child("Ques1")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot!!.exists()) {
+                    for (ques in dataSnapshot.children) {
+                        val quescontain = ques.getValue(Questions::class.java)
+                        quesList.add(quescontain!!)
+                        textView5.text = ques.getValue().toString()
+                        radioButton11.text = ques.child("option1").getValue().toString()
+                        radioButton12.text = ques.child("option2").getValue().toString()
+                        radioButton13.text = ques.child("option3").getValue().toString()
+                        radioButton14.text = ques.child("option4").getValue().toString()
+                    }
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+        })
+//    }
+        }
+
+//    fun checkCorrectOrWrong(){
+//
+//        radioButton11.setOnClickListener {
+//            if(radioButton11.text.toString().equals(correct)){
+//                correct++
+//                radioButton11.setBackgroundColor(Color.GREEN)
+//                score++
+//            }
+//            else{
+//                wrong++
+//                radioButton11.setBackgroundColor(Color.RED)
+//            }
+//        }
+//
+//        radioButton12.setOnClickListener {
+//            if(radioButton12.text.toString().equals(correct)){
+//                correct++
+//                radioButton12.setBackgroundColor(Color.GREEN)
+//                score++
+//            }
+//            else{
+//                wrong++
+//                radioButton12.setBackgroundColor(Color.RED)
+//            }
+//        }
+//
+//        radioButton13.setOnClickListener {
+//            if(radioButton13.text.toString().equals(correct)){
+//                correct++
+//                radioButton13.setBackgroundColor(Color.GREEN)
+//                score++
+//            }
+//            else{
+//                wrong++
+//                radioButton13.setBackgroundColor(Color.RED)
+//            }
+//        }
+//
+//        radioButton14.setOnClickListener {
+//            if(radioButton14.text.toString().equals(correct)){
+//                correct++
+//                radioButton14.setBackgroundColor(Color.GREEN)
+//                score++
+//            }
+//            else{
+//                wrong++
+//                radioButton14.setBackgroundColor(Color.RED)
+//            }
+//        }
+//    }
 }
+
+

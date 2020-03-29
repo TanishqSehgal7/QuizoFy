@@ -1,15 +1,12 @@
 package com.example.quizofy
 
 import android.content.Intent
-import android.content.IntentSender
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_quiz_category1.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
-import kotlinx.android.synthetic.main.activity_quiz_category10.*
 import kotlinx.android.synthetic.main.activity_quiz_category2.*
 
 class QuizCategory2 : AppCompatActivity() {
@@ -66,11 +63,11 @@ lateinit var timeCount:CountDownTimer
 
                 next2.setOnClickListener {
                     Toast.makeText(this@QuizCategory2,"Press Next again to reset the timer",Toast.LENGTH_SHORT).show()
-                    optionupdate()
                     radioButton21.isEnabled=true
                     radioButton22.isEnabled=true
                     radioButton23.isEnabled=true
                     radioButton24.isEnabled=true
+                    optionupdate()
                 }
             }
         }.start()
@@ -106,15 +103,35 @@ lateinit var timeCount:CountDownTimer
     fun resetoptions(){
         if(radioButton21.isChecked){
             radioButton21.isChecked=false
+            radioButton21.isEnabled=false
+            radioButton22.isEnabled=false
+            radioButton23.isEnabled=false
+            radioButton24.isEnabled=false
         }
         else if (radioButton22.isChecked){
             radioButton22.isChecked=false
+            radioButton21.isChecked=false
+            radioButton21.isEnabled=false
+            radioButton22.isEnabled=false
+            radioButton23.isEnabled=false
+            radioButton24.isEnabled=false
         }
         else if (radioButton23.isChecked){
             radioButton23.isChecked=false
+            radioButton21.isChecked=false
+            radioButton21.isEnabled=false
+            radioButton22.isEnabled=false
+            radioButton23.isEnabled=false
+            radioButton24.isEnabled=false
         }
         else {
             radioButton24.isChecked=false
+            radioButton21.isChecked=false
+            radioButton21.isEnabled=false
+            radioButton22.isEnabled=false
+            radioButton23.isEnabled=false
+            radioButton24.isEnabled=false
+
         }
     }
 

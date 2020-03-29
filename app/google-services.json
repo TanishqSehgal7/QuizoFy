@@ -10,10 +10,47 @@
       "client_info": {
         "mobilesdk_app_id": "1:480228145790:android:e85c9061efc1a6f02ef62f",
         "android_client_info": {
+          "package_name": "com.example.firebaseauthentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480228145790-dkuog529bjnrpan3l916n4bdn7smnt9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0JAhZTE3nJXR17aFOQWraGKmTz3v1IoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480228145790-dkuog529bjnrpan3l916n4bdn7smnt9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480228145790:android:7c071186bdd82d9a2ef62f",
+        "android_client_info": {
           "package_name": "com.example.quizofy"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "480228145790-g09pgf830fijcbnqjjikbadq8hkuhi3s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quizofy",
+            "certificate_hash": "5f16c3a6716f56610d97a5b81af804a592f5dfa9"
+          }
+        },
         {
           "client_id": "480228145790-dkuog529bjnrpan3l916n4bdn7smnt9h.apps.googleusercontent.com",
           "client_type": 3

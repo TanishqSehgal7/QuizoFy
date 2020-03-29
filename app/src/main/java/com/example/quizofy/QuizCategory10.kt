@@ -1,15 +1,13 @@
 package com.example.quizofy
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_quiz_category1.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category2.*
 
 class QuizCategory10 : AppCompatActivity() {
 lateinit var timeCount:CountDownTimer
@@ -66,16 +64,17 @@ lateinit var timeCount:CountDownTimer
                 radioButton04.isEnabled=false
                 next10.setOnClickListener {
                     Toast.makeText(this@QuizCategory10,"Press Next again to reset timer",Toast.LENGTH_SHORT).show()
-                    optionupdate()
                     radioButton01.isEnabled=true
                     radioButton02.isEnabled=true
                     radioButton03.isEnabled=true
                     radioButton04.isEnabled=true
+                    optionupdate()
 
                 }
             }
         }.start()
     }
+
 
     fun resetTimer(){
         timeCount.start()
@@ -104,20 +103,38 @@ lateinit var timeCount:CountDownTimer
         }
     }
 
+
     fun resetoptions(){
         if(radioButton01.isChecked){
             radioButton01.isChecked=false
+            radioButton01.isEnabled=false
+            radioButton02.isEnabled=false
+            radioButton03.isEnabled=false
+            radioButton04.isEnabled=false
         }
         else if (radioButton02.isChecked){
             radioButton02.isChecked=false
+            radioButton01.isEnabled=false
+            radioButton02.isEnabled=false
+            radioButton03.isEnabled=false
+            radioButton04.isEnabled=false
         }
         else if (radioButton03.isChecked){
             radioButton03.isChecked=false
+            radioButton01.isEnabled=false
+            radioButton02.isEnabled=false
+            radioButton03.isEnabled=false
+            radioButton04.isEnabled=false
         }
         else {
             radioButton04.isChecked=false
+            radioButton01.isEnabled=false
+            radioButton02.isEnabled=false
+            radioButton03.isEnabled=false
+            radioButton04.isEnabled=false
         }
     }
+
 
     fun resultKaIntent10(){
         val intent = Intent(this,ResultActivity::class.java)

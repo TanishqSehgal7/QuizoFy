@@ -1,15 +1,12 @@
 package com.example.quizofy
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_quiz_category1.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
-import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category2.*
 import kotlinx.android.synthetic.main.activity_quiz_category4.*
 
 class QuizCategory4 : AppCompatActivity() {
@@ -66,11 +63,11 @@ lateinit var timeCount:CountDownTimer
                 radioButton44.isEnabled=false
                 next4.setOnClickListener {
                     Toast.makeText(this@QuizCategory4,"Press Next again to reset timer",Toast.LENGTH_SHORT).show()
-                    optionupdate()
                     radioButton41.isEnabled=true
                     radioButton42.isEnabled=true
                     radioButton43.isEnabled=true
                     radioButton44.isEnabled=true
+                    optionupdate()
                 }
             }
         }.start()
@@ -106,15 +103,31 @@ lateinit var timeCount:CountDownTimer
     fun resetoptions(){
         if(radioButton41.isChecked){
             radioButton41.isChecked=false
+            radioButton41.isEnabled=false
+            radioButton42.isEnabled=false
+            radioButton43.isEnabled=false
+            radioButton44.isEnabled=false
         }
         else if (radioButton42.isChecked){
             radioButton42.isChecked=false
+            radioButton41.isEnabled=false
+            radioButton42.isEnabled=false
+            radioButton43.isEnabled=false
+            radioButton44.isEnabled=false
         }
         else if (radioButton43.isChecked){
             radioButton43.isChecked=false
+            radioButton41.isEnabled=false
+            radioButton42.isEnabled=false
+            radioButton43.isEnabled=false
+            radioButton44.isEnabled=false
         }
         else {
             radioButton44.isChecked=false
+            radioButton41.isEnabled=false
+            radioButton42.isEnabled=false
+            radioButton43.isEnabled=false
+            radioButton44.isEnabled=false
         }
     }
 
