@@ -3,7 +3,6 @@ package com.example.quizofy
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -161,7 +160,7 @@ class QuizCategory1 : AppCompatActivity() {
         quesList = mutableListOf()
         ref = FirebaseDatabase.getInstance().reference.child("quizofy-a163a").child("CATEGORIES") //------0error
             .child("Art and Literature").child("Ques1")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+        ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot!!.exists()) {
                     for (ques in dataSnapshot.children) {
