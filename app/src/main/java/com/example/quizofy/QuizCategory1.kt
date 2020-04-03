@@ -21,7 +21,6 @@ class QuizCategory1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
 
-
         radioButton11.isEnabled=false
         radioButton12.isEnabled=false
         radioButton13.isEnabled=false
@@ -62,7 +61,6 @@ class QuizCategory1 : AppCompatActivity() {
                         optionupdate()
                         next1.visibility=View.VISIBLE
                     }
-
                 }
             }
             override fun onFinish() {
@@ -158,8 +156,8 @@ class QuizCategory1 : AppCompatActivity() {
 //            } else
 //    {
         quesList = mutableListOf()
-        ref = FirebaseDatabase.getInstance().reference.child("quizofy-a163a").child("CATEGORIES") //------0error
-            .child("Art and Literature").child("Ques1")
+        ref = FirebaseDatabase.getInstance().reference.child("CATEGORIES")
+            .child("ART AND LITERATURE").child("Ques1")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot!!.exists()) {
@@ -174,7 +172,6 @@ class QuizCategory1 : AppCompatActivity() {
                     }
                 }
             }
-
             override fun onCancelled(p0: DatabaseError) {
 
             }

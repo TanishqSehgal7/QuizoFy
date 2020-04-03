@@ -48,7 +48,6 @@ class Questions {
         this.option4=option4
         this.correct=correct
         this.question=question
-
     }
 
 }
