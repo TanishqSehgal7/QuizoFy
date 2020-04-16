@@ -3,6 +3,7 @@ package com.example.quizofy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -30,6 +31,7 @@ class Main2ActivityIntroScreen : AppCompatActivity() {
 
     fun startIntent(){
         val intent=Intent(this,MainActivity::class.java)
+        Log.d("QuizCategory1","Main activity call")
         startActivity(intent)
     }
 

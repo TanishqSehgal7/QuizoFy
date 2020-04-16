@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class QuizCategory1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
+        Log.d("QuizCategory1","Quiz 1 oncreate called")
 
 
         radioButton11.isEnabled=false
@@ -29,6 +31,7 @@ class QuizCategory1 : AppCompatActivity() {
         radioButton14.isEnabled=false
 
         startTime.setOnClickListener {
+            Log.d("QuizCategory1","get question called and timer started")
                 getQuestion()
                 total++
                 radioButton11.isEnabled=true
@@ -151,27 +154,37 @@ class QuizCategory1 : AppCompatActivity() {
 
     fun getQuestion(){
 
-            if (total > 5) {
-                val intent = Intent(this, ResultActivity::class.java)
-                startActivity(intent)
-            } else
-    {
-        quesList = mutableListOf()
-        ref = FirebaseDatabase.getInstance().reference.child("CATEGORIES")
-            .child("ART AND LITERATURE").child("Ques1")
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (ques in dataSnapshot.children) {
-                        val quescontain = ques.getValue(Questions::class.java)
-                        quesList.add(quescontain!!)
-                        textView5.text = ques.value.toString()
-                        radioButton11.text = ques.child("option1").value.toString()
-                        radioButton12.text = ques.child("option2").value.toString()
-                        radioButton13.text = ques.child("option3").value.toString()
-                        radioButton14.text = ques.child("option4").value.toString()
-                    }
-                }
+                        if (total > 5) {
+                            val intent = Intent(this, ResultActivity::class.java)
+                            Log.d("QuizCategory1","result activiuty started")
+                            startActivity(intent)
+                        } else
+                        {
+                            quesList = mutableListOf()
+                            ref = FirebaseDatabase.getInstance().reference.child("CATEGORIES")
+                                .child("ART AND LITERATURE")
+                            Log.d("QuizCategory1","firebase data get")
+                            ref.addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    Log.d("QuizCategory1","on data change for started"+dataSnapshot.children.toString())
+                                    if (dataSnapshot!!.hasChild("Ques1")) {
+                                        for (ques in dataSnapshot.children) {
+                                            Log.d("QuizCategory1", "for stated")
+                                            val quescontain = ques.getValue(Questions::class.java)
+                                            quesList.add(quescontain!!)
+                                            textView5.text = ques.value.toString()
+                                            Log.d("QuizCategory1", "firebase item get")
+                                            radioButton11.text =
+                                                ques.child("option1").value.toString()
+                                            radioButton12.text =
+                                                ques.child("option2").value.toString()
+                                            radioButton13.text =
+                                                ques.child("option3").value.toString()
+                                            radioButton14.text =
+                                                ques.child("option4").value.toString()
+                                        }
+                                    }
+
             }
             override fun onCancelled(p0: DatabaseError) {
 

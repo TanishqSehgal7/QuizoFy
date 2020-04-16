@@ -24,7 +24,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         Log.d(TAG,"From ${remoteMessage?.from}")
 
         remoteMessage?.data?.isNotEmpty()?.let {
-            Log.d(TAG,"Message data payload" + remoteMessage.data)
 
             if (!remoteMessage.data.isNullOrEmpty()){
                 val msg : String=remoteMessage.data.get("message").toString()

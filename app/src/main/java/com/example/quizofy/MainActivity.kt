@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -16,6 +17,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category10.*
@@ -97,6 +100,7 @@ class MainActivity : AppCompatActivity(){
                 }
             }
             false
+
         }
 
 
@@ -104,15 +108,17 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         runAnimationOnCategoryTv()
+        Log.d("QuizCategory1","Main activity oncreate called")
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val alarmManager=getSystemService(Context.ALARM_SERVICE)
+        FirebaseMessaging.getInstance().isAutoInitEnabled=true
 
 
     }
    fun startQuiz1(view: View){
        val button=findViewById<Button>(R.id.c1)
        val intent=Intent(this,QuizCategory1::class.java)
+       Log.d("QuizCategory1","Quiz 1 started")
        startActivity(intent)
        finish()
    }
@@ -172,10 +178,12 @@ class MainActivity : AppCompatActivity(){
     }
 
     fun switchbwtweenfragments(fragment: Fragment) {
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.containFragment, fragment)
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         fragmentTransaction.isAddToBackStackAllowed
+        Log.d("QuizCategory1","frag is loaded")
         fragmentTransaction.commit()
 
     }
@@ -196,8 +204,4 @@ class MainActivity : AppCompatActivity(){
         bottomNavigation.startAnimation(animCategory)
 
     }
-
-
-
-
 }
