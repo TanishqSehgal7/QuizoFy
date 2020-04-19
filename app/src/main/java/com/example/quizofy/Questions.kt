@@ -1,7 +1,9 @@
 package com.example.quizofy
 
-class Questions (
+import com.google.firebase.database.IgnoreExtraProperties
 
+@IgnoreExtraProperties
+class Questions (
     private var category:String,
     private  var artLit:String,
     private  var entertainment:String,
@@ -16,7 +18,7 @@ class Questions (
     private  var Ques1:String,
     private  var Ques2:String,
     private  var Ques3:String,
-   private  var Ques4:String,
+    private  var Ques4:String,
     private var Ques5:String,
     private  var option1:String,
     private  var option2:String,

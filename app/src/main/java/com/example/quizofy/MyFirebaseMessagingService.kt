@@ -6,7 +6,9 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.media.RingtoneManager
+import android.media.SoundPool
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationBuilderWithBuilderAccessor
@@ -53,6 +55,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         if(Build.VERSION.SDK_INT>Build.VERSION_CODES.O){
             val channel=NotificationChannel(channelId,"Channel title",NotificationManager.IMPORTANCE_HIGH)
+            channel.description="QuizoFy Notification Channel"
+            channel.vibrationPattern= longArrayOf(0,1000,500,500)
+            channel.enableVibration(true)
+            channel.enableLights(true)
+            channel.lightColor=Color.GREEN
             notificationManager.createNotificationChannel(channel)
         }
         notificationManager.notify(0,notificationBuilder.build())
