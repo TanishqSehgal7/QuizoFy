@@ -154,12 +154,12 @@ class QuizCategory1 : AppCompatActivity() {
 
 
     fun getQuestion(){
-        if (total > 5) {
-            val intent = Intent(this, ResultActivity::class.java)
-                Log.d("QuizCategory1","result activiuty started")
-                startActivity(intent)
-        } else
-        {
+//        if (total > 5) {
+//            val intent = Intent(this, ResultActivity::class.java)
+//                Log.d("QuizCategory1","result activiuty started")
+//                startActivity(intent)
+//        } else
+//        {
             quesList = mutableListOf()
             ref = FirebaseDatabase.getInstance().reference.child("CATEGORIES")
                 .child("ART AND LITERATURE")
@@ -167,26 +167,27 @@ class QuizCategory1 : AppCompatActivity() {
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d("QuizCategory1","on data change for started"+dataSnapshot.children.toString())
-                    if (dataSnapshot!!.hasChild("Ques1")) {
+                    if (dataSnapshot!!.exists()) {
+                        Log.d("QuizCategory1","DataSnapshot has child"+dataSnapshot.children.toString())
                         for (ques in dataSnapshot.children) {
                             Log.d("QuizCategory1", "for stated")
                             val quescontain = ques.getValue(Questions::class.java)
                             quesList.add(quescontain!!)
-                            textView5.text = ques.value.toString()
+                            textView5.text = dataSnapshot.value.toString()
                             Log.d("QuizCategory1", "firebase item get")
                             radioButton11.text = ques.child("option1").value.toString()
-                            radioButton12.text = ques.child("option2").value.toString()
-                            radioButton13.text = ques.child("option3").value.toString()
-                            radioButton14.text = ques.child("option4").value.toString()
+                            radioButton12.text = dataSnapshot.child("option2").value.toString()
+                            radioButton13.text = dataSnapshot.child("option3").value.toString()
+                            radioButton14.text = dataSnapshot.child("option4").value.toString()
                         }
                     }
 
             }
             override fun onCancelled(p0: DatabaseError) {
-
+                Log.e("QuizCategory1","Something Went Wrong!!")
             }
         })
-    }
+//    }
     }
 
     fun checkCorrectOrWrong(){
