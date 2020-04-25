@@ -13,8 +13,6 @@ class MyFirebaseInstanceIdService : FirebaseMessagingService() {
 
         val newtoken=FirebaseInstanceId.getInstance().getToken()
         Log.d(TAG,"Refreshed Token" + newtoken)
-
-
     }
 
 

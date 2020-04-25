@@ -27,9 +27,9 @@ class Questions (
     private  var correct:String,
     private  var question:String) :Comparable<Questions> {
 
-    constructor(): this("","","","","","","","",
-    "","","","","","","","","","","",
-    "","","")
+    constructor(): this("","","","","","",
+        "","", "","","","","","","",
+        "","","","", "","","")
 
     init {
         this.category = category
@@ -60,5 +60,3 @@ class Questions (
         return 0
     }
 }
-
-

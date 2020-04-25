@@ -19,6 +19,7 @@ class QuizCategory1 : AppCompatActivity() {
     lateinit var ref:DatabaseReference
     lateinit var timeCount :CountDownTimer
     lateinit var quesList: MutableList<Questions>
+    private lateinit var databaseRef:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
@@ -29,6 +30,8 @@ class QuizCategory1 : AppCompatActivity() {
         radioButton12.isEnabled=false
         radioButton13.isEnabled=false
         radioButton14.isEnabled=false
+
+        databaseRef=FirebaseDatabase.getInstance().reference
 
         startTime.setOnClickListener {
             Log.d("QuizCategory1","get question called and timer started")
@@ -154,20 +157,19 @@ class QuizCategory1 : AppCompatActivity() {
 
 
     fun getQuestion(){
-//        if (total > 5) {
-//            val intent = Intent(this, ResultActivity::class.java)
-//                Log.d("QuizCategory1","result activiuty started")
-//                startActivity(intent)
-//        } else
-//        {
+        if (total > 5) {
+            val intent = Intent(this, ResultActivity::class.java)
+                Log.d("QuizCategory1","result activiuty started")
+                startActivity(intent)
+        } else
+        {
             quesList = mutableListOf()
-            ref = FirebaseDatabase.getInstance().reference.child("CATEGORIES")
-                .child("ART AND LITERATURE")
+            ref = databaseRef.child("CATEGORIES").child("ART AND LITERATURE")
             Log.d("QuizCategory1","firebase data get")
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d("QuizCategory1","on data change for started"+dataSnapshot.children.toString())
-                    if (dataSnapshot!!.exists()) {
+                    if (dataSnapshot!!.hasChild("Ques1")) {
                         Log.d("QuizCategory1","DataSnapshot has child"+dataSnapshot.children.toString())
                         for (ques in dataSnapshot.children) {
                             Log.d("QuizCategory1", "for stated")
@@ -185,9 +187,9 @@ class QuizCategory1 : AppCompatActivity() {
             }
             override fun onCancelled(p0: DatabaseError) {
                 Log.e("QuizCategory1","Something Went Wrong!!")
-            }
-        })
-//    }
+                }
+            })
+         }
     }
 
     fun checkCorrectOrWrong(){

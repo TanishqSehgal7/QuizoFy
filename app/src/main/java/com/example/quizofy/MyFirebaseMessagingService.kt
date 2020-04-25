@@ -44,12 +44,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val channelId=getString(R.string.notification_channel_description)
         val defaultSoundUri=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder=NotificationCompat.Builder(this,channelId)
-            .setSmallIcon(R.drawable.logo)
+            .setSmallIcon(R.drawable.quesmrk)
             .setContentTitle(getString(R.string.fcm_fallback_notification_channel_label))
             .setContentText(messageBody)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)
+            .setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
+
 
         val notificationManager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
