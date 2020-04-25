@@ -4,17 +4,17 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 class Questions (
-    private var category:String,
-    private  var artLit:String,
-    private  var entertainment:String,
-    private  var generalknowledge:String,
+    private var Categories:String,
+    private  var ArtandLiretaure:String,
+    private  var Entertainment:String,
+    private  var Generalknowledge:String,
     private  var Geography:String,
     private  var History:String,
     private  var Music:String,
     private  var Politics:String,
-    private  var sneakerCulture:String,
-    private  var sports:String,
-    private  var technology:String,
+    private  var SneakerCulture:String,
+    private  var Sports:String,
+    private  var Technology:String,
     private  var Ques1:String,
     private  var Ques2:String,
     private  var Ques3:String,
@@ -32,17 +32,17 @@ class Questions (
         "","","","", "","","")
 
     init {
-        this.category = category
-        this.artLit = artLit
-        this.entertainment = entertainment
-        this.generalknowledge = generalknowledge
+        this.Categories = Categories
+        this.ArtandLiretaure = ArtandLiretaure
+        this.Entertainment = Entertainment
+        this.Generalknowledge = Generalknowledge
         this.Geography = Geography
         this.History = History
         this.Music = Music
         this.Politics = Politics
-        this.sneakerCulture = sneakerCulture
-        this.sports = sports
-        this.technology = technology
+        this.SneakerCulture = SneakerCulture
+        this.Sports = Sports
+        this.Technology = Technology
         this.Ques1 = Ques1
         this.Ques2 = Ques2
         this.Ques3 = Ques3

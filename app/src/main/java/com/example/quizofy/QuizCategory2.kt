@@ -3,14 +3,24 @@ package com.example.quizofy
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category2.*
+import kotlinx.android.synthetic.main.activity_quiz_category2.textView5
 
 class QuizCategory2 : AppCompatActivity() {
-lateinit var timeCount:CountDownTimer
+    var correct=0
+    var wrong=0
+    var score=0
+    var total=0
+    lateinit var timeCount:CountDownTimer
+    lateinit var ref: DatabaseReference
+    private lateinit var databaseRef: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category2)
@@ -21,12 +31,16 @@ lateinit var timeCount:CountDownTimer
         radioButton24.isEnabled=false
 
         startTime2.setOnClickListener {
+            databaseRef=FirebaseDatabase.getInstance().reference
+            startClicked2()
+            getQuestion()
+            total++
             radioButton21.isEnabled=true
             radioButton22.isEnabled=true
             radioButton23.isEnabled=true
             radioButton24.isEnabled=true
             startTime2.visibility=View.INVISIBLE
-            startClicked2()
+
         }
 
         submitButton2.setOnClickListener {
@@ -140,5 +154,41 @@ lateinit var timeCount:CountDownTimer
         val intent = Intent(this,ResultActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    fun getQuestion(){
+        if (total > 5) {
+            val intent = Intent(this, ResultActivity::class.java)
+            Log.d("QuizCategory1","result activiuty started")
+            startActivity(intent)
+        } else
+        {
+            ref = databaseRef.child("CATEGORIES").child("Entertainment")
+                .child("Ques1")
+            Log.d("QuizCategory2","firebase data get")
+            ref.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Log.d("QuizCategory2","on data change for started"+dataSnapshot.children.toString())
+
+                    val option1Text=dataSnapshot.child("option1").value.toString()
+                    val option2Text=dataSnapshot.child("option2").value.toString()
+                    val option3Text=dataSnapshot.child("option3").value.toString()
+                    val option4Text=dataSnapshot.child("option4").value.toString()
+                    val correctAns=dataSnapshot.child("Correct").value.toString()
+                    val questionText=dataSnapshot.child("question").value.toString()
+
+                    textView5.setText(questionText)
+                    radioButton21.setText(option1Text)
+                    radioButton22.setText(option2Text)
+                    radioButton23.setText(option3Text)
+                    radioButton24.setText(option4Text)
+
+                }
+                override fun onCancelled(p0: DatabaseError) {
+                    Log.e("QuizCategory1","Something Went Wrong!!")
+                }
+            })
+        }
+
     }
 }

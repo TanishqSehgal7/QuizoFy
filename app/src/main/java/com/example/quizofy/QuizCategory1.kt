@@ -18,7 +18,6 @@ class QuizCategory1 : AppCompatActivity() {
     var total=0
     lateinit var ref:DatabaseReference
     lateinit var timeCount :CountDownTimer
-    lateinit var quesList: MutableList<Questions>
     private lateinit var databaseRef:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,18 +30,17 @@ class QuizCategory1 : AppCompatActivity() {
         radioButton13.isEnabled=false
         radioButton14.isEnabled=false
 
-        databaseRef=FirebaseDatabase.getInstance().reference
-
         startTime.setOnClickListener {
+            databaseRef=FirebaseDatabase.getInstance().reference
             Log.d("QuizCategory1","get question called and timer started")
                 getQuestion()
+                startClicked1()
                 total++
                 radioButton11.isEnabled=true
                 radioButton12.isEnabled=true
                 radioButton13.isEnabled=true
                 radioButton14.isEnabled=true
                 startTime.visibility=View.INVISIBLE
-                startClicked1()
 //                checkCorrectorWrong()
         }
 
@@ -163,26 +161,25 @@ class QuizCategory1 : AppCompatActivity() {
                 startActivity(intent)
         } else
         {
-            quesList = mutableListOf()
             ref = databaseRef.child("CATEGORIES").child("ART AND LITERATURE")
+                .child("Ques1")
             Log.d("QuizCategory1","firebase data get")
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d("QuizCategory1","on data change for started"+dataSnapshot.children.toString())
-                    if (dataSnapshot!!.hasChild("Ques1")) {
-                        Log.d("QuizCategory1","DataSnapshot has child"+dataSnapshot.children.toString())
-                        for (ques in dataSnapshot.children) {
-                            Log.d("QuizCategory1", "for stated")
-                            val quescontain = ques.getValue(Questions::class.java)
-                            quesList.add(quescontain!!)
-                            textView5.text = dataSnapshot.value.toString()
-                            Log.d("QuizCategory1", "firebase item get")
-                            radioButton11.text = ques.child("option1").value.toString()
-                            radioButton12.text = dataSnapshot.child("option2").value.toString()
-                            radioButton13.text = dataSnapshot.child("option3").value.toString()
-                            radioButton14.text = dataSnapshot.child("option4").value.toString()
-                        }
-                    }
+
+                    val option1Text=dataSnapshot.child("option1").value.toString()
+                    val option2Text=dataSnapshot.child("option2").value.toString()
+                    val option3Text=dataSnapshot.child("option3").value.toString()
+                    val option4Text=dataSnapshot.child("option4").value.toString()
+                    val correctAns=dataSnapshot.child("Correct").value.toString()
+                    val questionText=dataSnapshot.child("question").value.toString()
+
+                    textView5.setText(questionText)
+                    radioButton11.setText(option1Text)
+                    radioButton12.setText(option2Text)
+                    radioButton13.setText(option3Text)
+                    radioButton14.setText(option4Text)
 
             }
             override fun onCancelled(p0: DatabaseError) {
