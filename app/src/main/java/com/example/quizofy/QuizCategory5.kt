@@ -6,11 +6,18 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category5.*
 
 class QuizCategory5 : AppCompatActivity() {
-lateinit var timeCount:CountDownTimer
+    var correct=0
+    var wrong=0
+    var score=0
+    var total=0
+    lateinit var ref:DatabaseReference
+    private lateinit var databaseRef:DatabaseReference
+    lateinit var timeCount:CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category5)
@@ -21,12 +28,13 @@ lateinit var timeCount:CountDownTimer
         radioButton54.isEnabled=false
 
         startTime5.setOnClickListener {
+            startClicked5()
             radioButton51.isEnabled=true
             radioButton52.isEnabled=true
             radioButton53.isEnabled=true
             radioButton54.isEnabled=true
             startTime5.visibility=View.INVISIBLE
-            startClicked5()
+
         }
 
         submitButton5.setOnClickListener {
@@ -140,5 +148,9 @@ lateinit var timeCount:CountDownTimer
         val intent = Intent(this,ResultActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    fun getQuestion(){
+
     }
 }

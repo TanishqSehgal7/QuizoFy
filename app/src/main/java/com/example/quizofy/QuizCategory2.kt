@@ -34,13 +34,13 @@ class QuizCategory2 : AppCompatActivity() {
             databaseRef=FirebaseDatabase.getInstance().reference
             startClicked2()
             getQuestion()
-            total++
+            Log.d("QuizCategory2","get question called and timer started")
             radioButton21.isEnabled=true
             radioButton22.isEnabled=true
             radioButton23.isEnabled=true
             radioButton24.isEnabled=true
             startTime2.visibility=View.INVISIBLE
-
+            total++
         }
 
         submitButton2.setOnClickListener {
@@ -159,7 +159,7 @@ class QuizCategory2 : AppCompatActivity() {
     fun getQuestion(){
         if (total > 5) {
             val intent = Intent(this, ResultActivity::class.java)
-            Log.d("QuizCategory1","result activiuty started")
+            Log.d("QuizCategory2","result activity started")
             startActivity(intent)
         } else
         {
@@ -185,7 +185,7 @@ class QuizCategory2 : AppCompatActivity() {
 
                 }
                 override fun onCancelled(p0: DatabaseError) {
-                    Log.e("QuizCategory1","Something Went Wrong!!")
+                    Log.e("QuizCategory2","Something Went Wrong!!")
                 }
             })
         }

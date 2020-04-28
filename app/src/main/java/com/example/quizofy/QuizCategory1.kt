@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.renderscript.Sampler
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -17,8 +18,8 @@ class QuizCategory1 : AppCompatActivity() {
     var score=0
     var total=0
     lateinit var ref:DatabaseReference
-    lateinit var timeCount :CountDownTimer
     private lateinit var databaseRef:DatabaseReference
+    lateinit var timeCount :CountDownTimer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
@@ -31,16 +32,16 @@ class QuizCategory1 : AppCompatActivity() {
         radioButton14.isEnabled=false
 
         startTime.setOnClickListener {
-            databaseRef=FirebaseDatabase.getInstance().reference
-            Log.d("QuizCategory1","get question called and timer started")
+                databaseRef=FirebaseDatabase.getInstance().getReference("CATEGORIES")
                 getQuestion()
                 startClicked1()
-                total++
+                Log.d("QuizCategory1","get question called and timer started")
                 radioButton11.isEnabled=true
                 radioButton12.isEnabled=true
                 radioButton13.isEnabled=true
                 radioButton14.isEnabled=true
                 startTime.visibility=View.INVISIBLE
+                total++
 //                checkCorrectorWrong()
         }
 
@@ -157,8 +158,8 @@ class QuizCategory1 : AppCompatActivity() {
     fun getQuestion(){
         if (total > 5) {
             val intent = Intent(this, ResultActivity::class.java)
-                Log.d("QuizCategory1","result activiuty started")
-                startActivity(intent)
+            Log.d("QuizCategory1","result activiuty started")
+            startActivity(intent)
         } else
         {
             ref = databaseRef.child("CATEGORIES").child("ART AND LITERATURE")
@@ -167,27 +168,25 @@ class QuizCategory1 : AppCompatActivity() {
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d("QuizCategory1","on data change for started"+dataSnapshot.children.toString())
-
-                    val option1Text=dataSnapshot.child("option1").value.toString()
-                    val option2Text=dataSnapshot.child("option2").value.toString()
-                    val option3Text=dataSnapshot.child("option3").value.toString()
-                    val option4Text=dataSnapshot.child("option4").value.toString()
-                    val correctAns=dataSnapshot.child("Correct").value.toString()
-                    val questionText=dataSnapshot.child("question").value.toString()
-
+                    val option1Text=dataSnapshot.child("option1").getValue().toString()
+                    val option2Text=dataSnapshot.child("option2").getValue().toString()
+                    val option3Text=dataSnapshot.child("option3").getValue().toString()
+                    val option4Text=dataSnapshot.child("option4").getValue().toString()
+                    val correctAns=dataSnapshot.child("Correct").getValue().toString()
+                    val questionText=dataSnapshot.child("question").getValue().toString()
                     textView5.setText(questionText)
                     radioButton11.setText(option1Text)
                     radioButton12.setText(option2Text)
                     radioButton13.setText(option3Text)
                     radioButton14.setText(option4Text)
-
-            }
-            override fun onCancelled(p0: DatabaseError) {
-                Log.e("QuizCategory1","Something Went Wrong!!")
+                }
+                override fun onCancelled(p0: DatabaseError) {
+                    Log.e("QuizCategory1","Something Went Wrong!!")
                 }
             })
-         }
+        }
     }
+
 
     fun checkCorrectOrWrong(){
 
