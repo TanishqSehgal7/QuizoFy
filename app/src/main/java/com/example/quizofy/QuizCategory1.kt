@@ -11,12 +11,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
+import kotlinx.android.synthetic.main.activity_result.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class QuizCategory1 : AppCompatActivity() {
     var correct=0
     var wrong=0
     var score=0
     var total=0
+    val qlist= ArrayList<String>()
+    var i = 0
     lateinit var ref:DatabaseReference
     private lateinit var databaseRef:DatabaseReference
     lateinit var timeCount :CountDownTimer
@@ -24,7 +29,11 @@ class QuizCategory1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
         Log.d("QuizCategory1","Quiz 1 oncreate called")
-
+        qlist.add("Ques1")
+        qlist.add("Ques2")
+        qlist.add("Ques3")
+        qlist.add("Ques4")
+        qlist.add("Ques5")
 
         radioButton11.isEnabled=false
         radioButton12.isEnabled=false
@@ -53,6 +62,7 @@ class QuizCategory1 : AppCompatActivity() {
     }
 
     fun startClicked1() {
+        i=0
 
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
@@ -60,6 +70,7 @@ class QuizCategory1 : AppCompatActivity() {
 
                 if (radioButton11.isChecked||radioButton12.isChecked||radioButton13.isChecked||radioButton14.isChecked) {
                     optionupdate()
+                    checkCorrectOrWrong()
                 }
                 else {
                     next1.setOnClickListener {
@@ -67,6 +78,9 @@ class QuizCategory1 : AppCompatActivity() {
                         next1.visibility=View.INVISIBLE
                         resetTimer()
                         optionupdate()
+                        checkCorrectOrWrong()
+                        if(i<5)
+                            i++
                         next1.visibility=View.VISIBLE
                     }
                 }
@@ -85,6 +99,8 @@ class QuizCategory1 : AppCompatActivity() {
                     radioButton13.isEnabled=true
                     radioButton14.isEnabled=true
                     optionupdate()
+                    i++
+                    checkCorrectOrWrong()
                 }
             }
         }.start()
@@ -151,6 +167,8 @@ class QuizCategory1 : AppCompatActivity() {
     fun resultKaIntent1(){
         val intent =Intent(this,ResultActivity::class.java)
         startActivity(intent)
+        correctAns.setText(correct.toString())
+        wrongAns.setText(correct.toString())
         finish()
     }
 
@@ -162,9 +180,9 @@ class QuizCategory1 : AppCompatActivity() {
             startActivity(intent)
         } else
         {
-            ref = databaseRef.child("CATEGORIES").child("ART AND LITERATURE")
-                .child("Ques1")
-            Log.d("QuizCategory1","firebase data get")
+            ref = databaseRef.child("Art and Literature")
+                .child(qlist.get(i))
+            Log.d("QuizCategory1","firebase data get" )
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     Log.d("QuizCategory1","on data change for started"+dataSnapshot.children.toString())

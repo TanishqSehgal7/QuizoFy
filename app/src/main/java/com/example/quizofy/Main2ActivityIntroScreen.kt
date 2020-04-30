@@ -9,6 +9,8 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main2_intro_screen.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
@@ -21,6 +23,19 @@ class Main2ActivityIntroScreen : AppCompatActivity() {
         setContentView(R.layout.activity_main2_intro_screen)
 
         Toast.makeText(this,"Tap the button to browse categories",Toast.LENGTH_SHORT).show()
+
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = task.result?.token
+
+                // Log and toast
+                Log.d("QuizCategory1", "Token:"+ token)
+            })
         runAnimationFadeout()
         runAnimationZoom()
             intro.setOnClickListener {

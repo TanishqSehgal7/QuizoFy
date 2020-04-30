@@ -28,6 +28,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteMessage?.data?.isNotEmpty()?.let {
 
             if (!remoteMessage.data.isNullOrEmpty()){
+                
                 val msg : String=remoteMessage.data.get("message").toString()
             }
         }
