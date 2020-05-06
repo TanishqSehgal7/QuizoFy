@@ -116,47 +116,52 @@ class MainActivity : AppCompatActivity(){
 
     }
    fun startQuiz1(view: View){
-       val button=findViewById<Button>(R.id.c1)
-       val intent=Intent(this,QuizCategory1::class.java)
-       Log.d("QuizCategory1","Quiz 1 started")
-       startActivity(intent)
-       finish()
+           val button = findViewById<Button>(R.id.c1)
+           val intent = Intent(this, QuizCategory1::class.java)
+           Log.d("QuizCategory1", "Quiz 1 started")
+           startActivity(intent)
+           finish()
    }
+
     fun startQuiz2(view: View){
-        val button=findViewById<Button>(R.id.c2)
-        val intent=Intent(this,QuizCategory2::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c2)
+            val intent = Intent(this, QuizCategory2::class.java)
+            startActivity(intent)
+            finish()
     }
     fun startQuiz3(view: View){
-        val button=findViewById<Button>(R.id.c3)
-        val intent=Intent(this,QuizCategory3::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c3)
+            val intent = Intent(this, QuizCategory3::class.java)
+            startActivity(intent)
+            finish()
     }
+
     fun startQuiz4(view: View){
-        val button=findViewById<Button>(R.id.c4)
-        val intent=Intent(this,QuizCategory4::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c4)
+            val intent = Intent(this, QuizCategory4::class.java)
+            startActivity(intent)
+            finish()
     }
+
     fun startQuiz5(view: View){
-        val button=findViewById<Button>(R.id.c5)
-        val intent=Intent(this,QuizCategory5::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c5)
+            val intent = Intent(this, QuizCategory5::class.java)
+            startActivity(intent)
+            finish()
     }
+
     fun startQuiz6(view: View){
-        val button=findViewById<Button>(R.id.c6)
-        val intent=Intent(this,QuizCategory6::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c6)
+            val intent = Intent(this, QuizCategory6::class.java)
+            startActivity(intent)
+            finish()
     }
+
     fun startQuiz7(view: View){
-        val button=findViewById<Button>(R.id.c7)
-        val intent=Intent(this,QuizCategory7::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c7)
+            val intent = Intent(this, QuizCategory7::class.java)
+            startActivity(intent)
+            finish()
     }
     fun startQuiz8(view: View){
         val button=findViewById<Button>(R.id.c8)
@@ -164,17 +169,19 @@ class MainActivity : AppCompatActivity(){
         startActivity(intent)
         finish()
     }
+
     fun startQuiz9(view: View){
-        val button=findViewById<Button>(R.id.c9)
-        val intent=Intent(this,QuizCategory9::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c9)
+            val intent = Intent(this, QuizCategory9::class.java)
+            startActivity(intent)
+            finish()
     }
+
     fun startQuiz10(view: View){
-        val button=findViewById<Button>(R.id.c10)
-        val intent=Intent(this,QuizCategory10::class.java)
-        startActivity(intent)
-        finish()
+            val button = findViewById<Button>(R.id.c10)
+            val intent = Intent(this, QuizCategory10::class.java)
+            startActivity(intent)
+            finish()
     }
 
     fun switchbwtweenfragments(fragment: Fragment) {

@@ -58,8 +58,8 @@
 
     <RadioButton
         android:id="@+id/radioButton61"
-        android:layout_width="104dp"
-        android:layout_height="38dp"
+        android:layout_width="139dp"
+        android:layout_height="45dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Option1"
         android:textColor="@android:color/white"
