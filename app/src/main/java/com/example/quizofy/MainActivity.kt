@@ -1,35 +1,17 @@
 package com.example.quizofy
 
-import android.app.AlarmManager
-import android.content.Context
 import android.content.Intent
-import android.graphics.Insets.add
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
-import com.google.firebase.messaging.FirebaseMessagingService
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_quiz_category1.*
-import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category2.*
-import kotlinx.android.synthetic.main.activity_quiz_category3.*
-import kotlinx.android.synthetic.main.activity_quiz_category4.*
-import kotlinx.android.synthetic.main.activity_quiz_category5.*
-import kotlinx.android.synthetic.main.activity_quiz_category6.*
-import kotlinx.android.synthetic.main.activity_quiz_category7.*
-import kotlinx.android.synthetic.main.activity_quiz_category8.*
-import kotlinx.android.synthetic.main.activity_quiz_category9.*
 
 const val EXTRA_MESSAGE = "com.example.quizofy.MESSEGE"
 
@@ -53,6 +35,7 @@ class MainActivity : AppCompatActivity(){
                     c10.isClickable=true
                     startActivity(intent)
                     finish()
+//                    switchbwtweenfragments(NotificationsFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.notify -> {
@@ -70,7 +53,7 @@ class MainActivity : AppCompatActivity(){
 
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.Score -> {
+                R.id.Theme -> {
                     c1.isClickable=false
                     c2.isClickable=false
                     c3.isClickable=false
@@ -81,7 +64,7 @@ class MainActivity : AppCompatActivity(){
                     c8.isClickable=false
                     c9.isClickable=false
                     c10.isClickable=false
-                    switchbwtweenfragments(ScoreFragment())
+                    switchbwtweenfragments(ThemeFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.aboutApp -> {

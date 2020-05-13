@@ -12,6 +12,16 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
         Toast.makeText(this,"Tap Exit button to start browzing categories",Toast.LENGTH_SHORT).show()
+
+        val bundle: Bundle? = intent.extras
+        val corr: String? = bundle?.getString("correct")
+        val wrng: String? = bundle?.getString("correct")
+        val scor: String? = bundle?.getString("correct")
+
+        correctAns.setText("Correct: "+ corr)
+        wrongAns.setText("Wrong: " + wrng)
+        ScoreTotal.setText("Total Score:" + scor)
+
         closeBtn.setOnClickListener {
             exitTointroScreen()
         }

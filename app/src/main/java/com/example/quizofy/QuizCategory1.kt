@@ -23,7 +23,6 @@ class QuizCategory1 : AppCompatActivity() {
     var total=0
     val qlist= ArrayList<String>()
     var iterator = 0
-    var iterator2=0
     lateinit var ref:DatabaseReference
     lateinit var ref2: DatabaseReference
     private lateinit var databaseRef:DatabaseReference
@@ -34,11 +33,12 @@ class QuizCategory1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
         Log.d("QuizCategory1","Quiz 1 oncreate called")
+        qlist.add("Ques1")
         qlist.add("Ques2")
         qlist.add("Ques3")
         qlist.add("Ques4")
         qlist.add("Ques5")
-
+        Toast.makeText(this,"Press Start Button",Toast.LENGTH_SHORT).show()
         radioButton11.isEnabled=false
         radioButton12.isEnabled=false
         radioButton13.isEnabled=false
@@ -56,11 +56,35 @@ class QuizCategory1 : AppCompatActivity() {
                 radioButton14.isEnabled=true
                 startTime.visibility=View.INVISIBLE
                 total++
+            submitButton1.setOnClickListener {
+                if (iterator<5)
+                    resultKaIntent1()
+                Toast.makeText(this,"Your Result",Toast.LENGTH_SHORT).show()
+            }
+
         }
 
-        submitButton1.setOnClickListener {
-            resultKaIntent1()
-            Toast.makeText(this,"Your Result",Toast.LENGTH_SHORT).show()
+        next1.setOnClickListener {
+            if (iterator<5) {
+                radioButton11.isEnabled = true
+                radioButton12.isEnabled = true
+                radioButton13.isEnabled = true
+                radioButton14.isEnabled = true
+                radioButton11.setBackgroundColor(Color.TRANSPARENT)
+                radioButton12.setBackgroundColor(Color.TRANSPARENT)
+                radioButton13.setBackgroundColor(Color.TRANSPARENT)
+                radioButton14.setBackgroundColor(Color.TRANSPARENT)
+                iterator++
+                getQuestion()
+                resetoptions()
+                optionupdate()
+                resetTimer()
+                total++
+            }
+            else{
+                resultKaIntent1()
+            }
+
         }
     }
 
@@ -69,41 +93,14 @@ class QuizCategory1 : AppCompatActivity() {
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
                 textView3.text = ("00:" + (1 + (milisUntilFinished / 1000)))
-                    if (radioButton11.isChecked || radioButton12.isChecked || radioButton13.isChecked || radioButton14.isChecked) {
-                        checkCorrectOrWrongForQ1()
-                        radioButton11.isEnabled = false
-                        radioButton12.isEnabled = false
-                        radioButton13.isEnabled = false
-                        radioButton14.isEnabled = false
-                    } else {
-                        next1.setOnClickListener {
-                            if (iterator < 4) {
-                                radioButton11.isChecked = false
-                                radioButton12.isChecked = false
-                                radioButton13.isChecked = false
-                                radioButton14.isChecked = false
-                                radioButton11.isEnabled = true
-                                radioButton12.isEnabled = true
-                                radioButton13.isEnabled = true
-                                radioButton14.isEnabled = true
-                                radioButton11.setBackgroundColor(Color.TRANSPARENT)
-                                radioButton12.setBackgroundColor(Color.TRANSPARENT)
-                                radioButton13.setBackgroundColor(Color.TRANSPARENT)
-                                radioButton14.setBackgroundColor(Color.TRANSPARENT)
-                                updateQuestion()
-                                resetTimer()
-                                total++
-                                if (radioButton11.isChecked || radioButton12.isChecked || radioButton13.isChecked || radioButton14.isChecked) {
-                                  CorrectForTheQuestions()
-                                }
-                                next1.visibility = View.INVISIBLE
-                                iterator++
-                                next1.visibility = View.VISIBLE
-                            } else {
-                                resultKaIntent1()
-                            }
-                        }
-                    }
+                if (radioButton11.isChecked || radioButton12.isChecked || radioButton13.isChecked || radioButton14.isChecked){
+                    radioButton11.isEnabled=false
+                    radioButton12.isEnabled=false
+                    radioButton13.isEnabled=false
+                    radioButton14.isEnabled=false
+                    checkCorrectOrWrongForQ1()
+                }
+
                 }
                 override fun onFinish() {
                     textView3.text = "Time Over!!"
@@ -111,25 +108,6 @@ class QuizCategory1 : AppCompatActivity() {
                     radioButton12.isEnabled = false
                     radioButton13.isEnabled = false
                     radioButton14.isEnabled = false
-                    next1.setOnClickListener {
-
-                        radioButton11.isEnabled = true
-                        radioButton12.isEnabled = true
-                        radioButton13.isEnabled = true
-                        radioButton14.isEnabled = true
-                        radioButton11.setBackgroundColor(Color.TRANSPARENT)
-                        radioButton12.setBackgroundColor(Color.TRANSPARENT)
-                        radioButton13.setBackgroundColor(Color.TRANSPARENT)
-                        radioButton14.setBackgroundColor(Color.TRANSPARENT)
-                        optionupdate()
-                        resetoptions()
-                        updateQuestion()
-                        resetTimer()
-                        if (radioButton11.isChecked || radioButton12.isChecked || radioButton13.isChecked || radioButton14.isChecked) {
-                            CorrectForTheQuestions()
-                        }
-                        iterator++
-                    }
                 }
             }.start()
 
@@ -144,7 +122,6 @@ class QuizCategory1 : AppCompatActivity() {
                resetoptions()
         } else {
                 resetTimer()
-                updateQuestion()
         }
     }
 
@@ -162,24 +139,28 @@ class QuizCategory1 : AppCompatActivity() {
             radioButton14.isChecked=false
         }
     }
-
     fun resultKaIntent1(){
         val intent =Intent(this,ResultActivity::class.java)
+        intent.putExtra("correct",correct)
+        intent.putExtra("Wrong",wrong)
+        intent.putExtra("score",score)
         startActivity(intent)
         correctAns.setText(correct)
         wrongAns.setText(wrong)
         ScoreTotal.setText(score)
-//        finish()
     }
 
 
     fun getQuestion(){
-        if (total > 5) {
-            resultKaIntent1()
+        if (total > 4) {
+            Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
+            submitButton1.setOnClickListener {
+                resultKaIntent1()
+            }
         } else
         {
             ref = databaseRef.child("Art and Literature")
-                .child("Ques1")
+                .child(qlist.get(iterator))
             Log.d("QuizCategory1","firebase data get" )
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -195,13 +176,6 @@ class QuizCategory1 : AppCompatActivity() {
                     radioButton12.setText(option2Text)
                     radioButton13.setText(option3Text)
                     radioButton14.setText(option4Text)
-                    if (radioButton11.isChecked||radioButton12.isChecked||radioButton13.isChecked||radioButton14.isChecked){
-                        radioButton11.isEnabled=false
-                        radioButton12.isEnabled=false
-                        radioButton13.isEnabled=false
-                        radioButton14.isEnabled=false
-                        checkCorrectOrWrongForQ1()
-                    }
 
                 }
                 override fun onCancelled(p0: DatabaseError) {
@@ -212,163 +186,56 @@ class QuizCategory1 : AppCompatActivity() {
     }
 
 
-    fun updateQuestion(){
-        if (total>5){
-            resultKaIntent1()
-        }
-        else {
-            ref2 = databaseRef.child("Art and Literature").child(qlist.get(iterator))
-            ref2.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val option1Text = dataSnapshot.child("option1").getValue().toString()
-                    val option2Text = dataSnapshot.child("option2").getValue().toString()
-                    val option3Text = dataSnapshot.child("option3").getValue().toString()
-                    val option4Text = dataSnapshot.child("option4").getValue().toString()
-                    val questionText = dataSnapshot.child("question").getValue().toString()
-                    val correct = dataSnapshot.child("correct").getValue().toString()
-                    textView5.setText(questionText)
-                    radioButton11.setText(option1Text)
-                    radioButton12.setText(option2Text)
-                    radioButton13.setText(option3Text)
-                    radioButton14.setText(option4Text)
-                    if (radioButton11.isChecked||radioButton12.isChecked||radioButton13.isChecked||radioButton14.isChecked){
-                        radioButton11.isEnabled=false
-                        radioButton12.isEnabled=false
-                        radioButton13.isEnabled=false
-                        radioButton14.isEnabled=false
-                        CorrectForTheQuestions()
-                    }
-                }
-
-                override fun onCancelled(p0: DatabaseError) {
-                    Log.d("QuizCategory1", "Something went Wrong!!")
-                }
-
-            })
-        }
-    }
-
-
     fun checkCorrectOrWrongForQ1(){
-            ref = databaseRef.child("Art and Literature").child("Ques1")
+            ref = databaseRef.child("Art and Literature").child(qlist.get(iterator))
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                     Log.d("QuizCategory1", "Something went Wrong!!")
                 }
+
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val correctAns = dataSnapshot.child("correct").getValue().toString()
-                    if (radioButton11.isChecked) {
-                        if (radioButton11.text.toString().equals(correctAns)) {
-                            correct++
-                            score++
-                            radioButton11.setBackgroundColor(Color.GREEN)
-                        } else {
-                            wrong++
-                            radioButton11.setBackgroundColor(Color.RED)
-                        }
-
-                    }
-
-                    if (radioButton12.isChecked) {
-                        if (radioButton12.text.toString().equals(correctAns)) {
-                            correct++
-                            radioButton12.setBackgroundColor(Color.GREEN)
-                            score++
-                        } else {
-                            wrong++
-                            radioButton12.setBackgroundColor(Color.RED)
-                        }
-
-                    }
-
-                    if (radioButton13.isChecked) {
-                        if (radioButton13.text.toString().equals(correctAns)) {
-                            correct++
-                            radioButton13.setBackgroundColor(Color.GREEN)
-                            score++
-                        } else {
-                            wrong++
-                            radioButton13.setBackgroundColor(Color.RED)
-                        }
-                    }
-
-                    if (radioButton14.isChecked) {
-                        if (radioButton14.text.toString().equals(correctAns)) {
-                            correct++
-                            radioButton14.setBackgroundColor(Color.GREEN)
-                            score++
-                        } else {
-                            wrong++
-                            radioButton14.setBackgroundColor(Color.RED)
-                        }
-                    }
-                }
-            })
-    }
-
-
-    fun CorrectForTheQuestions(){
-
-        ref2=databaseRef.child("Art and Literature").child(qlist.get(iterator))
-
-        ref2.addValueEventListener(object: ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                    Log.d("QuizCategory1","Something went wrong!!")
-            }
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val otherCorrectAns=dataSnapshot.child("correct").getValue().toString()
-                if (radioButton11.isChecked) {
-                    if(radioButton11.text.toString().equals(otherCorrectAns)){
+                    if (radioButton11.isChecked  && radioButton11.text.toString().equals(correctAns))
+                    {
                         correct++
-                        radioButton11.setBackgroundColor(Color.GREEN)
                         score++
-                    }
-                    else{
+                        radioButton11.setBackgroundColor(Color.GREEN)
+                    } else {
                         wrong++
                         radioButton11.setBackgroundColor(Color.RED)
                     }
-
-                }
-
-                if (radioButton12.isChecked) {
-                    if(radioButton12.text.toString().equals(otherCorrectAns)){
+                    if (radioButton12.isChecked && radioButton12.text.toString()
+                            .equals(correctAns)
+                    ) {
                         correct++
                         radioButton12.setBackgroundColor(Color.GREEN)
                         score++
-                    }
-                    else{
+                    } else {
                         wrong++
                         radioButton12.setBackgroundColor(Color.RED)
                     }
-
-                }
-
-                if(radioButton13.isChecked) {
-                    if(radioButton13.text.toString().equals(otherCorrectAns)){
+                    if (radioButton13.isChecked && radioButton13.text.toString()
+                            .equals(correctAns)
+                    ) {
                         correct++
                         radioButton13.setBackgroundColor(Color.GREEN)
                         score++
-                    }
-                    else{
+                    } else {
                         wrong++
                         radioButton13.setBackgroundColor(Color.RED)
                     }
-                }
-
-                if (radioButton14.isChecked) {
-                    if(radioButton14.text.toString().equals(otherCorrectAns)){
+                    if (radioButton14.isChecked && radioButton14.text.toString()
+                            .equals(correctAns)
+                    ) {
                         correct++
                         radioButton14.setBackgroundColor(Color.GREEN)
                         score++
-                    }
-                    else{
+                    } else {
                         wrong++
                         radioButton14.setBackgroundColor(Color.RED)
                     }
                 }
-            }
-        })
+            })
     }
 }
 

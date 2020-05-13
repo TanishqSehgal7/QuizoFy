@@ -5,18 +5,18 @@
         android:title="Home"
         android:icon="@drawable/homeicon"
         android:iconTint="@android:color/white"/>
-
-    <item
-        android:id="@+id/Score"
-        android:title="Scores"
-        android:icon="@drawable/score"
-        android:iconTint="@android:color/white"/>
-
     <item
         android:id="@+id/notify"
         android:title="Notifications"
         android:icon="@drawable/bell"
         android:iconTint="@android:color/white"/>
+
+    <item
+        android:id="@+id/Theme"
+        android:title="AppTheme"
+        android:icon="@drawable/theme"
+        android:iconTint="@android:color/white"/>
+
     <item
         android:id="@+id/aboutApp"
         android:title="About Us"

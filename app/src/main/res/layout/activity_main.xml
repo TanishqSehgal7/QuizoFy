@@ -7,7 +7,6 @@
     tools:context=".MainActivity"
     android:background="#0d132e"
     android:id="@+id/containFragment">
-
    <TextView
        android:id="@+id/categorytv"
        android:layout_width="match_parent"
@@ -20,7 +19,6 @@
        android:textSize="35dp"
        android:layout_margin="10dp"
        android:textAlignment="center"/>
-
 
    <ScrollView
        android:id="@+id/scrollView1"
@@ -35,6 +33,7 @@
           android:layout_height="wrap_content"
           android:orientation="vertical"
           android:padding="5dp">
+
 
          <Button
              android:id="@+id/c1"
@@ -195,6 +194,7 @@
              android:layout_margin="10dp"
              android:onClick="startQuiz10"
              android:padding="10dp"/>
+
       </LinearLayout>
    </ScrollView>
 
