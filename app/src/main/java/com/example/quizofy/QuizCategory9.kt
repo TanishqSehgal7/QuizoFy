@@ -9,7 +9,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
+import kotlinx.android.synthetic.main.activity_quiz_category10.*
 import kotlinx.android.synthetic.main.activity_quiz_category8.*
 import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.activity_quiz_category9.textView5
@@ -41,8 +43,10 @@ class QuizCategory9 : AppCompatActivity() {
         radioButton92.isEnabled=false
         radioButton93.isEnabled=false
         radioButton94.isEnabled=false
+        next9.visibility=View.INVISIBLE
 
         databaseRef=FirebaseDatabase.getInstance().getReference("CATEGORIES")
+        submitButton9.visibility=View.INVISIBLE
 
         startTime9.setOnClickListener {
             startClicked()
@@ -52,6 +56,7 @@ class QuizCategory9 : AppCompatActivity() {
             radioButton92.isEnabled=true
             radioButton93.isEnabled=true
             radioButton94.isEnabled=true
+            next9.visibility=View.VISIBLE
             startTime9.visibility=View.INVISIBLE
             total++
         }
@@ -89,7 +94,7 @@ class QuizCategory9 : AppCompatActivity() {
     fun startClicked() {
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
-                textView3.text = ("00:" + (1 + (milisUntilFinished / 1000)))
+                textView3.text = ("Time Left:"+"00:" + (1 + (milisUntilFinished / 1000)))
                 if (radioButton91.isChecked || radioButton92.isChecked || radioButton93.isChecked || radioButton94.isChecked){
                     radioButton91.isEnabled=false
                     radioButton92.isEnabled=false
@@ -142,15 +147,21 @@ class QuizCategory9 : AppCompatActivity() {
         intent.putExtra("Wrong",wrong)
         intent.putExtra("score",score)
         startActivity(intent)
-        correctAns.setText(correct)
-        wrongAns.setText(wrong)
-        ScoreTotal.setText(score)
     }
 
 
     fun getQuestion(){
-        if (total > 4) {
-            resultKaIntent()
+        if (total >=5) {
+            submitButton9.visibility=View.VISIBLE
+            radioButton91.isEnabled=false
+            radioButton92.isEnabled=false
+            radioButton93.isEnabled=false
+            radioButton94.isEnabled=false
+            textView3.visibility=View.INVISIBLE
+            Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
+            submitButton9.setOnClickListener {
+                resultKaIntent()
+            }
         } else
         {
             ref = databaseRef.child("Sneaker Culture")
@@ -164,7 +175,8 @@ class QuizCategory9 : AppCompatActivity() {
                     val option3Text=dataSnapshot.child("option3").getValue().toString()
                     val option4Text=dataSnapshot.child("option4").getValue().toString()
                     val questionText=dataSnapshot.child("question").getValue().toString()
-                    textView5.setText(questionText)
+                    val quesNo=total.toString()
+                    textView5.setText(quesNo+". "+questionText)
                     radioButton91.setText(option1Text)
                     radioButton92.setText(option2Text)
                     radioButton93.setText(option3Text)
@@ -187,12 +199,14 @@ class QuizCategory9 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton91.isChecked ) {
                     if (radioButton91.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton91.setBackgroundColor(Color.GREEN)
+                        sct9.setText("Score: "+totalScore)
                     } else {
                         wrong++
                         radioButton91.setBackgroundColor(Color.RED)
@@ -202,8 +216,9 @@ class QuizCategory9 : AppCompatActivity() {
                 if (radioButton92.isChecked) {
                     if (radioButton92.text.toString().equals(correctAns)) {
                         correct++
-                        radioButton92.setBackgroundColor(Color.GREEN)
                         score++
+                        radioButton92.setBackgroundColor(Color.GREEN)
+                        sct9.setText("Score: "+totalScore)
                     } else {
                     wrong++
                     radioButton92.setBackgroundColor(Color.RED)
@@ -214,8 +229,9 @@ class QuizCategory9 : AppCompatActivity() {
                 if (radioButton93.isChecked ) {
                     if (radioButton93.text.toString().equals(correctAns)) {
                         correct++
-                        radioButton93.setBackgroundColor(Color.GREEN)
                         score++
+                        radioButton93.setBackgroundColor(Color.GREEN)
+                        sct9.setText("Score: "+totalScore)
                     }
                     else {
                         wrong++
@@ -226,8 +242,9 @@ class QuizCategory9 : AppCompatActivity() {
                 if (radioButton94.isChecked ) {
                     if (radioButton94.text.toString().equals(correctAns)) {
                         correct++
-                        radioButton94.setBackgroundColor(Color.GREEN)
                         score++
+                        radioButton94.setBackgroundColor(Color.GREEN)
+                        sct9.setText("Score: "+totalScore)
                     } else {
                         wrong++
                         radioButton94.setBackgroundColor(Color.RED)

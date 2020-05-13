@@ -17,7 +17,7 @@
         android:padding="10dp"
         android:text="TECHNOLOGY"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="35dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,23 +32,22 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_marginTop="68dp"
-        android:padding="5dp"
-        android:text="Time:00.30"
+        android:padding="20dp"
+        android:text="Timer"
         android:textColor="@android:color/white"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.146" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QUESTION TEXT\n\n\n"
         android:textColor="@android:color/white"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -118,15 +117,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.771" />
 
+
     <Button
         android:id="@+id/submitButton5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:background="@drawable/categorycontrolbtns"
+        android:foreground="?android:attr/selectableItemBackground"
         android:padding="15dp"
         android:text="SUBMIT"
-        android:foreground="?android:attr/selectableItemBackground"
         android:textColor="@android:color/holo_orange_light"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -134,9 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.908" />
-
-
+        app:layout_constraintVertical_bias="0.936" />
 
     <Button
         android:id="@+id/next5"
@@ -171,6 +169,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.267" />
+
+    <TextView
+        android:id="@+id/sct5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Score:"
+        android:textColor="@android:color/white"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

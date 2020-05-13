@@ -1,5 +1,6 @@
 package com.example.quizofy
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -9,10 +10,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
+import kotlinx.android.synthetic.main.activity_quiz_category10.*
 import kotlinx.android.synthetic.main.activity_quiz_category7.*
 import kotlinx.android.synthetic.main.activity_quiz_category8.*
 import kotlinx.android.synthetic.main.activity_quiz_category8.textView5
+import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.activity_result.*
 
 class QuizCategory8 : AppCompatActivity() {
@@ -41,8 +45,10 @@ class QuizCategory8 : AppCompatActivity() {
         radioButton82.isEnabled=false
         radioButton83.isEnabled=false
         radioButton84.isEnabled=false
+        next8.visibility=View.INVISIBLE
 
         databaseRef=FirebaseDatabase.getInstance().getReference("CATEGORIES")
+        submitButton8.visibility=View.INVISIBLE
 
         startTime8.setOnClickListener {
             startClicked()
@@ -52,6 +58,7 @@ class QuizCategory8 : AppCompatActivity() {
             radioButton82.isEnabled=true
             radioButton83.isEnabled=true
             radioButton84.isEnabled=true
+            next8.visibility=View.VISIBLE
             startTime8.visibility=View.INVISIBLE
             total++
         }
@@ -89,7 +96,7 @@ class QuizCategory8 : AppCompatActivity() {
     fun startClicked() {
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
-                textView3.text = ("00:" + (1 + (milisUntilFinished / 1000)))
+                textView3.text = ("Time Left:"+"00:" + (1 + (milisUntilFinished / 1000)))
                 if (radioButton81.isChecked || radioButton82.isChecked || radioButton83.isChecked || radioButton84.isChecked){
                     radioButton81.isEnabled=false
                     radioButton82.isEnabled=false
@@ -142,15 +149,21 @@ class QuizCategory8 : AppCompatActivity() {
         intent.putExtra("Wrong",wrong)
         intent.putExtra("score",score)
         startActivity(intent)
-        correctAns.setText(correct)
-        wrongAns.setText(wrong)
-        ScoreTotal.setText(score)
     }
 
 
     fun getQuestion(){
-        if (total > 4) {
-            resultKaIntent()
+        if (total >=5) {
+            submitButton8.visibility=View.VISIBLE
+            radioButton81.isEnabled=false
+            radioButton82.isEnabled=false
+            radioButton83.isEnabled=false
+            radioButton84.isEnabled=false
+            textView3.visibility=View.INVISIBLE
+            Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
+            submitButton8.setOnClickListener {
+                resultKaIntent()
+            }
         } else
         {
             ref = databaseRef.child("Music")
@@ -164,7 +177,8 @@ class QuizCategory8 : AppCompatActivity() {
                     val option3Text=dataSnapshot.child("option3").getValue().toString()
                     val option4Text=dataSnapshot.child("option4").getValue().toString()
                     val questionText=dataSnapshot.child("question").getValue().toString()
-                    textView5.setText(questionText)
+                    val quesNo=total.toString()
+                    textView5.setText(quesNo+". "+questionText)
                     radioButton81.setText(option1Text)
                     radioButton82.setText(option2Text)
                     radioButton83.setText(option3Text)
@@ -180,50 +194,63 @@ class QuizCategory8 : AppCompatActivity() {
 
 
     fun checkCorrectOrWrongForQues(){
-        ref = databaseRef.child("Entertainment").child(qlist.get(iterator))
+        ref = databaseRef.child("Music").child(qlist.get(iterator))
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 Log.d("QuizCategory8", "Something went Wrong!!")
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
-                if (radioButton81.isChecked  && radioButton81.text.toString().equals(correctAns))
-                {
-                    correct++
-                    score++
-                    radioButton81.setBackgroundColor(Color.GREEN)
-                } else {
-                    wrong++
-                    radioButton81.setBackgroundColor(Color.RED)
+                if (radioButton81.isChecked ) {
+                    if (radioButton81.text.toString().equals(correctAns)){
+                        correct++
+                        score++
+                        radioButton81.setBackgroundColor(Color.GREEN)
+                        sct8.setText("Score: "+totalScore)
+                    } else {
+                        wrong++
+                        radioButton81.setBackgroundColor(Color.RED)
+                    }
                 }
 
-                if (radioButton82.isChecked && radioButton82.text.toString().equals(correctAns)) {
-                    correct++
-                    radioButton82.setBackgroundColor(Color.GREEN)
-                    score++
-                } else {
-                    wrong++
-                    radioButton82.setBackgroundColor(Color.RED)
+                if (radioButton82.isChecked) {
+                    if (radioButton82.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton82.setBackgroundColor(Color.GREEN)
+                        sct8.setText("Score: "+totalScore)
+                    } else {
+                        wrong++
+                        radioButton82.setBackgroundColor(Color.RED)
+                    }
                 }
 
 
-                if (radioButton83.isChecked && radioButton83.text.toString().equals(correctAns)) {
-                    correct++
-                    radioButton83.setBackgroundColor(Color.GREEN)
-                    score++
-                } else {
-                    wrong++
-                    radioButton83.setBackgroundColor(Color.RED)
+                if (radioButton93.isChecked ) {
+                    if (radioButton83.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton83.setBackgroundColor(Color.GREEN)
+                        sct8.setText("Score: "+totalScore)
+                    }
+                    else {
+                        wrong++
+                        radioButton83.setBackgroundColor(Color.RED)
+                    }
                 }
 
-                if (radioButton84.isChecked && radioButton84.text.toString().equals(correctAns)) {
-                    correct++
-                    radioButton84.setBackgroundColor(Color.GREEN)
-                    score++
-                } else {
-                    wrong++
-                    radioButton84.setBackgroundColor(Color.RED)
+                if (radioButton94.isChecked ) {
+                    if (radioButton84.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton84.setBackgroundColor(Color.GREEN)
+                        sct8.setText("Score: "+totalScore)
+                    } else {
+                        wrong++
+                        radioButton84.setBackgroundColor(Color.RED)
+                    }
                 }
             }
         })

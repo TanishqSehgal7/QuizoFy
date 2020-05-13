@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category10.*
 import kotlinx.android.synthetic.main.activity_quiz_category10.textView5
@@ -41,8 +42,10 @@ class QuizCategory10 : AppCompatActivity() {
         radioButton02.isEnabled=false
         radioButton03.isEnabled=false
         radioButton04.isEnabled=false
+        next10.visibility=View.INVISIBLE
 
         databaseRef=FirebaseDatabase.getInstance().getReference("CATEGORIES")
+        submitButton10.visibility=View.INVISIBLE
 
         startTime10.setOnClickListener {
             startClicked()
@@ -52,6 +55,7 @@ class QuizCategory10 : AppCompatActivity() {
             radioButton02.isEnabled=true
             radioButton03.isEnabled=true
             radioButton04.isEnabled=true
+            next10.visibility=View.VISIBLE
             startTime10.visibility=View.INVISIBLE
             total++
         }
@@ -89,7 +93,7 @@ class QuizCategory10 : AppCompatActivity() {
     fun startClicked() {
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
-                textView3.text = ("00:" + (1 + (milisUntilFinished / 1000)))
+                textView3.text = ("Time Left:"+"00:" + (1 + (milisUntilFinished / 1000)))
                 if (radioButton01.isChecked || radioButton02.isChecked || radioButton03.isChecked || radioButton04.isChecked){
                     radioButton01.isEnabled=false
                     radioButton02.isEnabled=false
@@ -142,15 +146,21 @@ class QuizCategory10 : AppCompatActivity() {
         intent.putExtra("Wrong",wrong)
         intent.putExtra("score",score)
         startActivity(intent)
-        correctAns.setText(correct)
-        wrongAns.setText(wrong)
-        ScoreTotal.setText(score)
     }
 
 
     fun getQuestion(){
-        if (total > 4) {
-            resultKaIntent()
+        if (total >=5) {
+            submitButton10.visibility=View.VISIBLE
+            radioButton01.isEnabled=false
+            radioButton02.isEnabled=false
+            radioButton03.isEnabled=false
+            radioButton04.isEnabled=false
+            textView3.visibility=View.INVISIBLE
+            Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
+            submitButton10.setOnClickListener {
+                resultKaIntent()
+            }
         } else
         {
             ref = databaseRef.child("Politics")
@@ -164,7 +174,8 @@ class QuizCategory10 : AppCompatActivity() {
                     val option3Text=dataSnapshot.child("option3").getValue().toString()
                     val option4Text=dataSnapshot.child("option4").getValue().toString()
                     val questionText=dataSnapshot.child("question").getValue().toString()
-                    textView5.setText(questionText)
+                    val quesNo=total.toString()
+                    textView5.setText(quesNo+". "+questionText)
                     radioButton01.setText(option1Text)
                     radioButton02.setText(option2Text)
                     radioButton03.setText(option3Text)
@@ -187,43 +198,60 @@ class QuizCategory10 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
-                if (radioButton01.isChecked  && radioButton01.text.toString().equals(correctAns))
-                {
-                    correct++
-                    score++
-                    radioButton01.setBackgroundColor(Color.GREEN)
-                } else {
-                    wrong++
-                    radioButton01.setBackgroundColor(Color.RED)
+                if (radioButton01.isChecked) {
+                    if (radioButton01.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton01.setBackgroundColor(Color.GREEN)
+                        sct10.setText("Score: "+totalScore)
+                    } else {
+                        wrong++
+                        radioButton01.setBackgroundColor(Color.RED)
+                    }
                 }
 
-                if (radioButton02.isChecked && radioButton02.text.toString().equals(correctAns)) {
-                    correct++
-                    radioButton02.setBackgroundColor(Color.GREEN)
-                    score++
-                } else {
-                    wrong++
-                    radioButton02.setBackgroundColor(Color.RED)
+                if (radioButton02.isChecked) {
+                    if (radioButton02.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton02.setBackgroundColor(Color.GREEN)
+                        sct10.setText("Score: "+totalScore)
+                    }
+                    else {
+                        wrong++
+                        radioButton02.setBackgroundColor(Color.RED)
+                    }
                 }
 
 
-                if (radioButton03.isChecked && radioButton03.text.toString().equals(correctAns)) {
-                    correct++
-                    radioButton03.setBackgroundColor(Color.GREEN)
-                    score++
-                } else {
-                    wrong++
-                    radioButton03.setBackgroundColor(Color.RED)
+                if (radioButton03.isChecked ) {
+                    if (radioButton03.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton03.setBackgroundColor(Color.GREEN)
+                        sct10.setText("Score: "+totalScore)
+
+                    }
+                    else {
+                        wrong++
+                        radioButton03.setBackgroundColor(Color.RED)
+                    }
                 }
 
-                if (radioButton04.isChecked && radioButton04.text.toString().equals(correctAns)) {
-                    correct++
-                    radioButton04.setBackgroundColor(Color.GREEN)
-                    score++
-                } else {
-                    wrong++
-                    radioButton04.setBackgroundColor(Color.RED)
+                if (radioButton04.isChecked ) {
+                    if (radioButton04.text.toString().equals(correctAns)) {
+                        correct++
+                        score++
+                        radioButton04.setBackgroundColor(Color.GREEN)
+                        sct10.setText("Score: "+totalScore)
+
+                    }
+                    else {
+                        wrong++
+                        radioButton04.setBackgroundColor(Color.RED)
+                    }
                 }
             }
         })
