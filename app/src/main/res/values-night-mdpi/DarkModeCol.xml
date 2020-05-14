@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!-- Customize your theme here. -->
+
+<resources>
+    <color name="colorPrimary">@android:color/black</color>
+    <color name="colorPrimaryDark">@android:color/holo_purple</color>
+    <color name="colorAccent">@android:color/holo_blue_dark</color>
+</resources>

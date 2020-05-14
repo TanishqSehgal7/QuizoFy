@@ -145,9 +145,9 @@ class QuizCategory8 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
@@ -155,6 +155,7 @@ class QuizCategory8 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton8.visibility=View.VISIBLE
+            next8.visibility=View.INVISIBLE
             radioButton81.isEnabled=false
             radioButton82.isEnabled=false
             radioButton83.isEnabled=false
@@ -192,7 +193,6 @@ class QuizCategory8 : AppCompatActivity() {
         }
     }
 
-
     fun checkCorrectOrWrongForQues(){
         ref = databaseRef.child("Music").child(qlist.get(iterator))
         ref.addValueEventListener(object : ValueEventListener {
@@ -201,55 +201,57 @@ class QuizCategory8 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton81.isChecked ) {
                     if (radioButton81.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton81.setBackgroundColor(Color.GREEN)
-                        sct8.setText("Score: "+totalScore)
+                        radioButton81.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton81.setBackgroundColor(Color.RED)
+                        radioButton81.isChecked=false
                     }
                 }
 
                 if (radioButton82.isChecked) {
                     if (radioButton82.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton82.setBackgroundColor(Color.GREEN)
-                        sct8.setText("Score: "+totalScore)
+                        score++
+                        radioButton82.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton82.setBackgroundColor(Color.RED)
+                        radioButton83.isChecked=false
                     }
                 }
 
-
-                if (radioButton93.isChecked ) {
+                if (radioButton83.isChecked ) {
                     if (radioButton83.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton83.setBackgroundColor(Color.GREEN)
-                        sct8.setText("Score: "+totalScore)
+                        score++
+                        radioButton83.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton83.setBackgroundColor(Color.RED)
+                        radioButton83.isChecked=false
                     }
                 }
 
-                if (radioButton94.isChecked ) {
+                if (radioButton84.isChecked ) {
                     if (radioButton84.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton84.setBackgroundColor(Color.GREEN)
-                        sct8.setText("Score: "+totalScore)
+                        score++
+                        radioButton84.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton84.setBackgroundColor(Color.RED)
+                        radioButton84.isChecked=false
                     }
                 }
             }

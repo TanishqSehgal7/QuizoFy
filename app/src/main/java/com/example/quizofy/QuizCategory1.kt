@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView5
 import kotlinx.android.synthetic.main.activity_quiz_category10.*
+import kotlinx.android.synthetic.main.activity_quiz_category6.*
 import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.activity_result.*
 import java.util.*
@@ -147,16 +148,17 @@ class QuizCategory1 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
 
     fun getQuestion(){
-        if (total >= 5) {
+        if (total >=5) {
             submitButton1.visibility=View.VISIBLE
+            next1.visibility=View.INVISIBLE
             radioButton11.isEnabled=false
             radioButton12.isEnabled=false
             radioButton13.isEnabled=false
@@ -202,17 +204,18 @@ class QuizCategory1 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
+                val totalCorr=correct.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton11.isChecked ) {
                     if (radioButton11.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton11.setBackgroundColor(Color.GREEN)
-                        sct1.setText("Score: "+totalScore)
+                        radioButton11.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton11.setBackgroundColor(Color.RED)
+                        radioButton11.isChecked=false
                     }
                 }
 
@@ -221,10 +224,11 @@ class QuizCategory1 : AppCompatActivity() {
                         correct++
                         radioButton12.setBackgroundColor(Color.GREEN)
                         score++
-                        sct1.setText("Score: "+totalScore)
+                        radioButton12.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton12.setBackgroundColor(Color.RED)
+                        radioButton13.isChecked=false
                     }
                 }
 
@@ -233,11 +237,12 @@ class QuizCategory1 : AppCompatActivity() {
                         correct++
                         radioButton13.setBackgroundColor(Color.GREEN)
                         score++
-                        sct1.setText("Score: "+totalScore)
+                        radioButton13.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton13.setBackgroundColor(Color.RED)
+                        radioButton13.isChecked=false
                     }
                 }
 
@@ -246,10 +251,11 @@ class QuizCategory1 : AppCompatActivity() {
                         correct++
                         radioButton14.setBackgroundColor(Color.GREEN)
                         score++
-                        sct1.setText("Score: "+totalScore)
+                        radioButton14.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton14.setBackgroundColor(Color.RED)
+                        radioButton14.isChecked=false
                     }
                 }
             }

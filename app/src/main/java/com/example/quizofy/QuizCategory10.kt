@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category10.*
 import kotlinx.android.synthetic.main.activity_quiz_category10.textView5
+import kotlinx.android.synthetic.main.activity_quiz_category8.*
 import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.activity_result.*
 
@@ -142,9 +143,9 @@ class QuizCategory10 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
@@ -152,6 +153,7 @@ class QuizCategory10 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton10.visibility=View.VISIBLE
+            next10.visibility=View.INVISIBLE
             radioButton01.isEnabled=false
             radioButton02.isEnabled=false
             radioButton03.isEnabled=false
@@ -189,7 +191,6 @@ class QuizCategory10 : AppCompatActivity() {
         }
     }
 
-
     fun checkCorrectOrWrongForQues(){
         ref = databaseRef.child("Politics").child(qlist.get(iterator))
         ref.addValueEventListener(object : ValueEventListener {
@@ -198,59 +199,57 @@ class QuizCategory10 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
-                if (radioButton01.isChecked) {
-                    if (radioButton01.text.toString().equals(correctAns)) {
+                if (radioButton01.isChecked ) {
+                    if (radioButton01.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton01.setBackgroundColor(Color.GREEN)
-                        sct10.setText("Score: "+totalScore)
+                        radioButton01.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton01.setBackgroundColor(Color.RED)
+                        radioButton01.isChecked=false
                     }
                 }
 
                 if (radioButton02.isChecked) {
                     if (radioButton02.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton02.setBackgroundColor(Color.GREEN)
-                        sct10.setText("Score: "+totalScore)
-                    }
-                    else {
-                        wrong++
+                        score++
+                        radioButton02.isChecked=false
+                    } else {
+                        wrong=total-correct
                         radioButton02.setBackgroundColor(Color.RED)
+                        radioButton03.isChecked=false
                     }
                 }
-
 
                 if (radioButton03.isChecked ) {
                     if (radioButton03.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton03.setBackgroundColor(Color.GREEN)
-                        sct10.setText("Score: "+totalScore)
-
+                        score++
+                        radioButton03.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton03.setBackgroundColor(Color.RED)
+                        radioButton03.isChecked=false
                     }
                 }
 
                 if (radioButton04.isChecked ) {
                     if (radioButton04.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton04.setBackgroundColor(Color.GREEN)
-                        sct10.setText("Score: "+totalScore)
-
-                    }
-                    else {
-                        wrong++
+                        score++
+                        radioButton04.isChecked=false
+                    } else {
+                        wrong=total-correct
                         radioButton04.setBackgroundColor(Color.RED)
+                        radioButton04.isChecked=false
                     }
                 }
             }

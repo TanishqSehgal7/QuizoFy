@@ -59,7 +59,7 @@ class QuizCategory6 : AppCompatActivity() {
             radioButton62.isEnabled=true
             radioButton63.isEnabled=true
             radioButton64.isEnabled=true
-            next6.visibility=View.INVISIBLE
+            next6.visibility=View.VISIBLE
             startTime6.visibility=View.INVISIBLE
             total++
         }
@@ -146,9 +146,9 @@ class QuizCategory6 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
@@ -160,6 +160,7 @@ class QuizCategory6 : AppCompatActivity() {
             radioButton62.isEnabled=false
             radioButton63.isEnabled=false
             radioButton64.isEnabled=false
+            next6.visibility=View.INVISIBLE
             textView3.visibility=View.INVISIBLE
             Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
             submitButton6.setOnClickListener {
@@ -202,55 +203,57 @@ class QuizCategory6 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton61.isChecked ) {
                     if (radioButton61.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton61.setBackgroundColor(Color.GREEN)
-                        sct6.setText("Score: "+totalScore)
+                        radioButton61.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton61.setBackgroundColor(Color.RED)
+                        radioButton61.isChecked=false
                     }
                 }
 
                 if (radioButton62.isChecked) {
                     if (radioButton62.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton62.setBackgroundColor(Color.GREEN)
-                        sct6.setText("Score: "+totalScore)
+                        score++
+                        radioButton62.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton62.setBackgroundColor(Color.RED)
+                        radioButton63.isChecked=false
                     }
                 }
-
 
                 if (radioButton63.isChecked ) {
                     if (radioButton63.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton63.setBackgroundColor(Color.GREEN)
-                        sct6.setText("Score: "+totalScore)
+                        score++
+                        radioButton63.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton63.setBackgroundColor(Color.RED)
+                        radioButton63.isChecked=false
                     }
                 }
 
                 if (radioButton64.isChecked ) {
                     if (radioButton64.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton64.setBackgroundColor(Color.GREEN)
-                        sct6.setText("Score: "+totalScore)
+                        score++
+                        radioButton64.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton64.setBackgroundColor(Color.RED)
+                        radioButton64.isChecked=false
                     }
                 }
             }

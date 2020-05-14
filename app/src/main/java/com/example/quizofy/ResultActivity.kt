@@ -15,8 +15,8 @@ class ResultActivity : AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
         val corr: String? = bundle?.getString("correct")
-        val wrng: String? = bundle?.getString("correct")
-        val scor: String? = bundle?.getString("correct")
+        val wrng: String? = bundle?.getString("Wrong")
+        val scor: String? = bundle?.getString("score")
 
         correctAns.setText("Correct: "+ corr)
         wrongAns.setText("Wrong: " + wrng)

@@ -143,9 +143,9 @@ class QuizCategory9 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
@@ -153,6 +153,7 @@ class QuizCategory9 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton9.visibility=View.VISIBLE
+            next9.visibility=View.INVISIBLE
             radioButton91.isEnabled=false
             radioButton92.isEnabled=false
             radioButton93.isEnabled=false
@@ -190,67 +191,69 @@ class QuizCategory9 : AppCompatActivity() {
         }
     }
 
-
     fun checkCorrectOrWrongForQues(){
-        ref = databaseRef.child("Sneaker culture").child(qlist.get(iterator))
+        ref = databaseRef.child("Sneaker Culture").child(qlist.get(iterator))
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 Log.d("QuizCategory9", "Something went Wrong!!")
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton91.isChecked ) {
                     if (radioButton91.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton91.setBackgroundColor(Color.GREEN)
-                        sct9.setText("Score: "+totalScore)
+                        radioButton91.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton91.setBackgroundColor(Color.RED)
+                        radioButton91.isChecked=false
                     }
                 }
 
                 if (radioButton92.isChecked) {
                     if (radioButton92.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton92.setBackgroundColor(Color.GREEN)
-                        sct9.setText("Score: "+totalScore)
+                        score++
+                        radioButton92.isChecked=false
                     } else {
-                    wrong++
-                    radioButton92.setBackgroundColor(Color.RED)
+                        wrong=total-correct
+                        radioButton92.setBackgroundColor(Color.RED)
+                        radioButton93.isChecked=false
+                    }
                 }
-            }
-
 
                 if (radioButton93.isChecked ) {
                     if (radioButton93.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton93.setBackgroundColor(Color.GREEN)
-                        sct9.setText("Score: "+totalScore)
+                        score++
+                        radioButton93.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton93.setBackgroundColor(Color.RED)
+                        radioButton93.isChecked=false
                     }
                 }
 
                 if (radioButton94.isChecked ) {
                     if (radioButton94.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton94.setBackgroundColor(Color.GREEN)
-                        sct9.setText("Score: "+totalScore)
+                        score++
+                        radioButton94.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton94.setBackgroundColor(Color.RED)
+                        radioButton94.isChecked=false
                     }
                 }
             }
         })
     }
 }
+

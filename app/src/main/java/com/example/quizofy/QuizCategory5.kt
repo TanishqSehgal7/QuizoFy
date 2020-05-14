@@ -145,9 +145,9 @@ class QuizCategory5 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
@@ -155,6 +155,7 @@ class QuizCategory5 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton5.visibility=View.VISIBLE
+            next5.visibility=View.INVISIBLE
             radioButton51.isEnabled=false
             radioButton52.isEnabled=false
             radioButton53.isEnabled=false
@@ -201,56 +202,57 @@ class QuizCategory5 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton51.isChecked ) {
                     if (radioButton51.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton51.setBackgroundColor(Color.GREEN)
-                        sct5.setText("Score: "+totalScore)
+                        radioButton51.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton51.setBackgroundColor(Color.RED)
+                        radioButton51.isChecked=false
                     }
                 }
 
                 if (radioButton52.isChecked) {
                     if (radioButton52.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton52.setBackgroundColor(Color.GREEN)
-                        sct5.setText("Score: "+totalScore)
-
+                        score++
+                        radioButton52.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton52.setBackgroundColor(Color.RED)
+                        radioButton53.isChecked=false
                     }
                 }
-
 
                 if (radioButton53.isChecked ) {
                     if (radioButton53.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton53.setBackgroundColor(Color.GREEN)
-                        sct5.setText("Score: "+totalScore)
+                        score++
+                        radioButton53.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton53.setBackgroundColor(Color.RED)
+                        radioButton53.isChecked=false
                     }
                 }
 
                 if (radioButton54.isChecked ) {
                     if (radioButton54.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton54.setBackgroundColor(Color.GREEN)
-                        sct5.setText("Score: "+totalScore)
+                        score++
+                        radioButton54.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton54.setBackgroundColor(Color.RED)
+                        radioButton54.isChecked=false
                     }
                 }
             }

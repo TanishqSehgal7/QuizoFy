@@ -145,9 +145,9 @@ class QuizCategory4 : AppCompatActivity() {
     }
     fun resultKaIntent(){
         val intent =Intent(this,ResultActivity::class.java)
-        intent.putExtra("correct",correct)
-        intent.putExtra("Wrong",wrong)
-        intent.putExtra("score",score)
+        intent.putExtra("correct",correct.toString())
+        intent.putExtra("Wrong",wrong.toString())
+        intent.putExtra("score",score.toString())
         startActivity(intent)
     }
 
@@ -155,6 +155,7 @@ class QuizCategory4 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton4.visibility=View.VISIBLE
+            next4.visibility=View.INVISIBLE
             radioButton41.isEnabled=false
             radioButton42.isEnabled=false
             radioButton43.isEnabled=false
@@ -193,6 +194,7 @@ class QuizCategory4 : AppCompatActivity() {
     }
 
 
+
     fun checkCorrectOrWrongForQues(){
         ref = databaseRef.child("History").child(qlist.get(iterator))
         ref.addValueEventListener(object : ValueEventListener {
@@ -201,55 +203,57 @@ class QuizCategory4 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalScore=score.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton41.isChecked ) {
                     if (radioButton41.text.toString().equals(correctAns)){
                         correct++
                         score++
                         radioButton41.setBackgroundColor(Color.GREEN)
-                        sct4.setText("Score: "+totalScore)
+                        radioButton41.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton41.setBackgroundColor(Color.RED)
+                        radioButton41.isChecked=false
                     }
                 }
 
                 if (radioButton42.isChecked) {
                     if (radioButton42.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton42.setBackgroundColor(Color.GREEN)
-                        sct4.setText("Score: "+totalScore)
+                        score++
+                        radioButton42.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton42.setBackgroundColor(Color.RED)
+                        radioButton42.isChecked=false
                     }
                 }
-
 
                 if (radioButton43.isChecked ) {
                     if (radioButton43.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton43.setBackgroundColor(Color.GREEN)
-                        sct4.setText("Score: "+totalScore)
+                        score++
+                        radioButton43.isChecked=false
                     }
                     else {
-                        wrong++
+                        wrong=total-correct
                         radioButton43.setBackgroundColor(Color.RED)
+                        radioButton43.isChecked=false
                     }
                 }
 
                 if (radioButton44.isChecked ) {
                     if (radioButton44.text.toString().equals(correctAns)) {
                         correct++
-                        score++
                         radioButton44.setBackgroundColor(Color.GREEN)
-                        sct4.setText("Score: "+totalScore)
+                        score++
+                        radioButton44.isChecked=false
                     } else {
-                        wrong++
+                        wrong=total-correct
                         radioButton44.setBackgroundColor(Color.RED)
+                        radioButton44.isChecked=false
                     }
                 }
             }
