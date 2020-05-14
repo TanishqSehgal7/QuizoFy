@@ -7,17 +7,19 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_themechange.*
 
 const val EXTRA_MESSAGE = "com.example.quizofy.MESSEGE"
 
 
 class MainActivity : AppCompatActivity(){
-
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity(){
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.Theme -> {
+                    val i=Intent(this,ThemeActivity::class.java)
                     c1.isClickable=false
                     c2.isClickable=false
                     c3.isClickable=false
@@ -64,7 +67,9 @@ class MainActivity : AppCompatActivity(){
                     c8.isClickable=false
                     c9.isClickable=false
                     c10.isClickable=false
-                    switchbwtweenfragments(ThemeFragment())
+                    startActivity(i)
+                    finish()
+//                    switchbwtweenfragments(ThemeFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.aboutApp -> {
@@ -103,68 +108,68 @@ class MainActivity : AppCompatActivity(){
            val intent = Intent(this, QuizCategory1::class.java)
            Log.d("QuizCategory1", "Quiz 1 started")
            startActivity(intent)
-           finish()
+
    }
 
     fun startQuiz2(view: View){
             val button = findViewById<Button>(R.id.c2)
             val intent = Intent(this, QuizCategory2::class.java)
             startActivity(intent)
-            finish()
+
     }
     fun startQuiz3(view: View){
             val button = findViewById<Button>(R.id.c3)
             val intent = Intent(this, QuizCategory3::class.java)
             startActivity(intent)
-            finish()
+
     }
 
     fun startQuiz4(view: View){
             val button = findViewById<Button>(R.id.c4)
             val intent = Intent(this, QuizCategory4::class.java)
             startActivity(intent)
-            finish()
+
     }
 
     fun startQuiz5(view: View){
             val button = findViewById<Button>(R.id.c5)
             val intent = Intent(this, QuizCategory5::class.java)
             startActivity(intent)
-            finish()
+
     }
 
     fun startQuiz6(view: View){
             val button = findViewById<Button>(R.id.c6)
             val intent = Intent(this, QuizCategory6::class.java)
             startActivity(intent)
-            finish()
+
     }
 
     fun startQuiz7(view: View){
             val button = findViewById<Button>(R.id.c7)
             val intent = Intent(this, QuizCategory7::class.java)
             startActivity(intent)
-            finish()
+
     }
     fun startQuiz8(view: View){
         val button=findViewById<Button>(R.id.c8)
         val intent=Intent(this,QuizCategory8::class.java)
         startActivity(intent)
-        finish()
+
     }
 
     fun startQuiz9(view: View){
             val button = findViewById<Button>(R.id.c9)
             val intent = Intent(this, QuizCategory9::class.java)
             startActivity(intent)
-            finish()
+
     }
 
     fun startQuiz10(view: View){
             val button = findViewById<Button>(R.id.c10)
             val intent = Intent(this, QuizCategory10::class.java)
             startActivity(intent)
-            finish()
+
     }
 
     fun switchbwtweenfragments(fragment: Fragment) {

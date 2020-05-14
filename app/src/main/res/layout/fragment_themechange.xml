@@ -10,13 +10,29 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
-        android:padding="90dp"
-        android:text="Coming Soon !"
+        android:padding="30dp"
+        android:layout_margin="20dp"
+        android:textColorHighlight="@android:color/holo_orange_light"
+        android:text="Change Your theme Here:"
         android:textColor="@android:color/white"
         android:textSize="50dp"
         android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="400dp"
+        android:text="Change Theme"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@android:color/black"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="30dp"
+        android:background="@drawable/buttonroundforcategories"/>
 
 
 </FrameLayout>
