@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#0d132e</color>
     <color name="colorAccent">#D81B60</color>
     <color name="background">@android:color/black</color>
+
+    <color name="color1">#e56aff</color>
+    <color name="color2">#7e62ff</color>
+
+
 </resources>

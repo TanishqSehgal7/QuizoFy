@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.ActionBar
 import kotlinx.android.synthetic.main.activity_main2_intro_screen.*
 import kotlinx.android.synthetic.main.splashscreen.*
 
@@ -14,6 +15,10 @@ class splashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splashscreen)
+        val ab: ActionBar?=supportActionBar
+        if (ab!=null){
+            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
+        }
         runAnimationOnTextOfSplashScreen()
         runRotationAnimation()
 

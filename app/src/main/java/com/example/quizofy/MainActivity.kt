@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
@@ -14,6 +15,16 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_quiz_category1.*
+import kotlinx.android.synthetic.main.activity_quiz_category10.*
+import kotlinx.android.synthetic.main.activity_quiz_category2.*
+import kotlinx.android.synthetic.main.activity_quiz_category3.*
+import kotlinx.android.synthetic.main.activity_quiz_category4.*
+import kotlinx.android.synthetic.main.activity_quiz_category5.*
+import kotlinx.android.synthetic.main.activity_quiz_category6.*
+import kotlinx.android.synthetic.main.activity_quiz_category7.*
+import kotlinx.android.synthetic.main.activity_quiz_category8.*
+import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.fragment_themechange.*
 
 const val EXTRA_MESSAGE = "com.example.quizofy.MESSEGE"
@@ -95,6 +106,12 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val ab:ActionBar?=supportActionBar
+        if (ab != null) {
+            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
+        }
+
         runAnimationOnCategoryTv()
         Log.d("QuizCategory1","Main activity oncreate called")
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -106,7 +123,6 @@ class MainActivity : AppCompatActivity(){
    fun startQuiz1(view: View){
            val button = findViewById<Button>(R.id.c1)
            val intent = Intent(this, QuizCategory1::class.java)
-           Log.d("QuizCategory1", "Quiz 1 started")
            startActivity(intent)
 
    }
@@ -199,4 +215,6 @@ class MainActivity : AppCompatActivity(){
         bottomNavigation.startAnimation(animCategory)
 
     }
+
+
 }

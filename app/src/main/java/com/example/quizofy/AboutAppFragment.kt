@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import kotlinx.android.synthetic.main.fragment_about_app.*
 
 /**

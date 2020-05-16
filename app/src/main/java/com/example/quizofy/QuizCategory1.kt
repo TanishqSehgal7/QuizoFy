@@ -8,17 +8,16 @@ import android.os.CountDownTimer
 import android.renderscript.Sampler
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView5
-import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category6.*
-import kotlinx.android.synthetic.main.activity_quiz_category9.*
-import kotlinx.android.synthetic.main.activity_result.*
-import java.util.*
+
 import kotlin.collections.ArrayList
 
 class QuizCategory1 : AppCompatActivity() {
@@ -36,6 +35,10 @@ class QuizCategory1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category1)
+        val ab: ActionBar?=supportActionBar
+        if (ab!=null){
+            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
+        }
         Log.d("QuizCategory1","Quiz 1 oncreate called")
         qlist.add("Ques1")
         qlist.add("Ques2")
@@ -54,6 +57,7 @@ class QuizCategory1 : AppCompatActivity() {
 
         startTime.setOnClickListener {
                 startClicked1()
+                textView3.setTextColor(Color.GREEN)
                 getQuestion()
                 Log.d("QuizCategory1","get question called and timer started")
                 radioButton11.isEnabled=true
@@ -81,6 +85,7 @@ class QuizCategory1 : AppCompatActivity() {
                 radioButton12.setBackgroundColor(Color.TRANSPARENT)
                 radioButton13.setBackgroundColor(Color.TRANSPARENT)
                 radioButton14.setBackgroundColor(Color.TRANSPARENT)
+                textView3.setTextColor(Color.GREEN)
                 iterator++
                 getQuestion()
                 resetoptions()
@@ -100,6 +105,9 @@ class QuizCategory1 : AppCompatActivity() {
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
                 textView3.text = ("Time Left:"+"00:" + (1 + (milisUntilFinished / 1000)))
+                if ((1 + (milisUntilFinished / 1000))<=3){
+                    textView3.setTextColor(Color.RED)
+                }
                 if (radioButton11.isChecked || radioButton12.isChecked || radioButton13.isChecked || radioButton14.isChecked){
                     radioButton11.isEnabled=false
                     radioButton12.isEnabled=false
@@ -158,6 +166,8 @@ class QuizCategory1 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton1.visibility=View.VISIBLE
+            val anim2=AnimationUtils.loadAnimation(this@QuizCategory1,R.anim.fadein)
+            submitButton1.startAnimation(anim2)
             next1.visibility=View.INVISIBLE
             radioButton11.isEnabled=false
             radioButton12.isEnabled=false
@@ -182,10 +192,16 @@ class QuizCategory1 : AppCompatActivity() {
                     val option4Text=dataSnapshot.child("option4").getValue().toString()
                     val questionText=dataSnapshot.child("question").getValue().toString()
                     val quesNo=total.toString()
+                    val anim=AnimationUtils.loadAnimation(this@QuizCategory1,R.anim.slide_down)
+                    textView5.startAnimation(anim)
                     textView5.setText(quesNo+". "+questionText)
+                    radioButton11.startAnimation(anim)
                     radioButton11.setText(option1Text)
+                    radioButton12.startAnimation(anim)
                     radioButton12.setText(option2Text)
+                    radioButton13.startAnimation(anim)
                     radioButton13.setText(option3Text)
+                    radioButton14.startAnimation(anim)
                     radioButton14.setText(option4Text)
                 }
                 override fun onCancelled(p0: DatabaseError) {

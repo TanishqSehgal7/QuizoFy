@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.*
@@ -33,6 +35,10 @@ class QuizCategory2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category2)
+        val ab: ActionBar?=supportActionBar
+        if (ab!=null){
+            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
+        }
         Log.d("QuizCategory2","Quiz 2 oncreate called")
         qlist.add("Ques1")
         qlist.add("Ques2")
@@ -49,6 +55,7 @@ class QuizCategory2 : AppCompatActivity() {
         submitButton2.visibility=View.INVISIBLE
         startTime2.setOnClickListener {
             startClicked2()
+            textView3.setTextColor(Color.GREEN)
             getQuestion()
             Log.d("QuizCategory2","get question called and timer started")
             radioButton21.isEnabled=true
@@ -69,6 +76,7 @@ class QuizCategory2 : AppCompatActivity() {
                 radioButton22.setBackgroundColor(Color.TRANSPARENT)
                 radioButton23.setBackgroundColor(Color.TRANSPARENT)
                 radioButton24.setBackgroundColor(Color.TRANSPARENT)
+                textView3.setTextColor(Color.GREEN)
                 iterator++
                 getQuestion()
                 resetoptions()
@@ -92,6 +100,9 @@ class QuizCategory2 : AppCompatActivity() {
         timeCount =  object : CountDownTimer(10000, 1000) {
             override fun onTick(milisUntilFinished: Long) {
                 textView3.text = ("Time Left:"+"00:" + (1 + (milisUntilFinished / 1000)))
+                if ((1 + (milisUntilFinished / 1000))<=3){
+                    textView3.setTextColor(Color.RED)
+                }
                 if (radioButton21.isChecked || radioButton22.isChecked || radioButton23.isChecked || radioButton24.isChecked){
                     radioButton21.isEnabled=false
                     radioButton22.isEnabled=false
@@ -147,6 +158,8 @@ class QuizCategory2 : AppCompatActivity() {
     fun getQuestion(){
         if (total >=5) {
             submitButton2.visibility=View.VISIBLE
+            val anim2=AnimationUtils.loadAnimation(this,R.anim.fadein)
+            submitButton2.startAnimation(anim2)
             next2.visibility=View.INVISIBLE
             radioButton21.isEnabled=false
             radioButton22.isEnabled=false
@@ -172,10 +185,16 @@ class QuizCategory2 : AppCompatActivity() {
                     val option4Text=dataSnapshot.child("option4").getValue().toString()
                     val questionText=dataSnapshot.child("question").getValue().toString()
                     val quesNo=total.toString()
+                    val anim= AnimationUtils.loadAnimation(this@QuizCategory2,R.anim.slide_down)
+                    textView5.startAnimation(anim)
                     textView5.setText(quesNo+". "+questionText)
+                    radioButton21.startAnimation(anim)
                     radioButton21.setText(option1Text)
+                    radioButton22.startAnimation(anim)
                     radioButton22.setText(option2Text)
+                    radioButton23.startAnimation(anim)
                     radioButton23.setText(option3Text)
+                    radioButton24.startAnimation(anim)
                     radioButton24.setText(option4Text)
                 }
                 override fun onCancelled(p0: DatabaseError) {
