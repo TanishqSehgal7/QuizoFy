@@ -9,10 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_quiz_category1.*
 import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
-import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category8.*
 import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.activity_quiz_category9.textView5
 import kotlinx.android.synthetic.main.activity_result.*
@@ -210,6 +207,8 @@ class QuizCategory9 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton91.setBackgroundColor(Color.RED)
                         radioButton91.isChecked=false
+                        Toast.makeText(this@QuizCategory9,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -223,6 +222,8 @@ class QuizCategory9 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton92.setBackgroundColor(Color.RED)
                         radioButton93.isChecked=false
+                        Toast.makeText(this@QuizCategory9,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -237,6 +238,8 @@ class QuizCategory9 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton93.setBackgroundColor(Color.RED)
                         radioButton93.isChecked=false
+                        Toast.makeText(this@QuizCategory9,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -250,6 +253,8 @@ class QuizCategory9 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton94.setBackgroundColor(Color.RED)
                         radioButton94.isChecked=false
+                        Toast.makeText(this@QuizCategory9,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
             }

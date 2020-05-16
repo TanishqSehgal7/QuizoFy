@@ -204,7 +204,6 @@ class QuizCategory1 : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val totalCorr=correct.toString()
                 val correctAns = dataSnapshot.child("correct").getValue().toString()
                 if (radioButton11.isChecked ) {
                     if (radioButton11.text.toString().equals(correctAns)){
@@ -216,6 +215,7 @@ class QuizCategory1 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton11.setBackgroundColor(Color.RED)
                         radioButton11.isChecked=false
+                        Toast.makeText(this@QuizCategory1,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -229,6 +229,7 @@ class QuizCategory1 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton12.setBackgroundColor(Color.RED)
                         radioButton13.isChecked=false
+                        Toast.makeText(this@QuizCategory1,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -243,6 +244,7 @@ class QuizCategory1 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton13.setBackgroundColor(Color.RED)
                         radioButton13.isChecked=false
+                        Toast.makeText(this@QuizCategory1,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -256,6 +258,7 @@ class QuizCategory1 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton14.setBackgroundColor(Color.RED)
                         radioButton14.isChecked=false
+                        Toast.makeText(this@QuizCategory1,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
                     }
                 }
             }

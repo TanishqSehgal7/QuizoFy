@@ -212,6 +212,8 @@ class QuizCategory8 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton81.setBackgroundColor(Color.RED)
                         radioButton81.isChecked=false
+                        Toast.makeText(this@QuizCategory8,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -225,6 +227,8 @@ class QuizCategory8 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton82.setBackgroundColor(Color.RED)
                         radioButton83.isChecked=false
+                        Toast.makeText(this@QuizCategory8,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -239,6 +243,8 @@ class QuizCategory8 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton83.setBackgroundColor(Color.RED)
                         radioButton83.isChecked=false
+                        Toast.makeText(this@QuizCategory8,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -252,6 +258,8 @@ class QuizCategory8 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton84.setBackgroundColor(Color.RED)
                         radioButton84.isChecked=false
+                        Toast.makeText(this@QuizCategory8,"Correct Ans:"+correctAns,Toast.LENGTH_SHORT).show()
+
                     }
                 }
             }

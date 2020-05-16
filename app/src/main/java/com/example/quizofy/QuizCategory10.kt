@@ -2,51 +2,46 @@ package com.example.quizofy
 
 import android.content.Intent
 import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_quiz_category1.*
-import kotlinx.android.synthetic.main.activity_quiz_category1.textView3
 import kotlinx.android.synthetic.main.activity_quiz_category10.*
-import kotlinx.android.synthetic.main.activity_quiz_category10.textView5
-import kotlinx.android.synthetic.main.activity_quiz_category8.*
-import kotlinx.android.synthetic.main.activity_quiz_category9.*
-import kotlinx.android.synthetic.main.activity_result.*
 
 class QuizCategory10 : AppCompatActivity() {
+
     var correct=0
     var wrong=0
     var score=0
     var total=0
     val qlist= ArrayList<String>()
     var iterator = 0
-    lateinit var ref:DatabaseReference
-    private lateinit var databaseRef:DatabaseReference
-    lateinit var timeCount :CountDownTimer
-
+    lateinit var ref: DatabaseReference
+    private lateinit var databaseRef: DatabaseReference
+    lateinit var timeCount : CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category10)
+
         Log.d("QuizCategory10","Quiz 10 oncreate called")
         qlist.add("Ques1")
         qlist.add("Ques2")
         qlist.add("Ques3")
         qlist.add("Ques4")
         qlist.add("Ques5")
-        Toast.makeText(this,"Press Start Button",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Press Start Button", Toast.LENGTH_SHORT).show()
         radioButton01.isEnabled=false
         radioButton02.isEnabled=false
         radioButton03.isEnabled=false
         radioButton04.isEnabled=false
-        next10.visibility=View.INVISIBLE
+        next10.visibility= View.INVISIBLE
 
-        databaseRef=FirebaseDatabase.getInstance().getReference("CATEGORIES")
-        submitButton10.visibility=View.INVISIBLE
+        databaseRef= FirebaseDatabase.getInstance().getReference("CATEGORIES")
+        submitButton10.visibility= View.INVISIBLE
 
         startTime10.setOnClickListener {
             startClicked()
@@ -56,8 +51,8 @@ class QuizCategory10 : AppCompatActivity() {
             radioButton02.isEnabled=true
             radioButton03.isEnabled=true
             radioButton04.isEnabled=true
-            next10.visibility=View.VISIBLE
-            startTime10.visibility=View.INVISIBLE
+            next10.visibility= View.VISIBLE
+            startTime10.visibility= View.INVISIBLE
             total++
         }
 
@@ -142,7 +137,7 @@ class QuizCategory10 : AppCompatActivity() {
         }
     }
     fun resultKaIntent(){
-        val intent =Intent(this,ResultActivity::class.java)
+        val intent = Intent(this,ResultActivity::class.java)
         intent.putExtra("correct",correct.toString())
         intent.putExtra("Wrong",wrong.toString())
         intent.putExtra("score",score.toString())
@@ -152,14 +147,14 @@ class QuizCategory10 : AppCompatActivity() {
 
     fun getQuestion(){
         if (total >=5) {
-            submitButton10.visibility=View.VISIBLE
-            next10.visibility=View.INVISIBLE
+            submitButton10.visibility= View.VISIBLE
+            next10.visibility= View.INVISIBLE
             radioButton01.isEnabled=false
             radioButton02.isEnabled=false
             radioButton03.isEnabled=false
             radioButton04.isEnabled=false
-            textView3.visibility=View.INVISIBLE
-            Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
+            textView3.visibility= View.INVISIBLE
+            Toast.makeText(this,"Press Submit button to view the result", Toast.LENGTH_SHORT).show()
             submitButton10.setOnClickListener {
                 resultKaIntent()
             }
@@ -210,6 +205,7 @@ class QuizCategory10 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton01.setBackgroundColor(Color.RED)
                         radioButton01.isChecked=false
+                        Toast.makeText(this@QuizCategory10, "Correct Ans:$correctAns", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -223,6 +219,8 @@ class QuizCategory10 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton02.setBackgroundColor(Color.RED)
                         radioButton03.isChecked=false
+                        Toast.makeText(this@QuizCategory10, "Correct Ans:$correctAns", Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -237,6 +235,8 @@ class QuizCategory10 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton03.setBackgroundColor(Color.RED)
                         radioButton03.isChecked=false
+                        Toast.makeText(this@QuizCategory10, "Correct Ans:$correctAns", Toast.LENGTH_SHORT).show()
+
                     }
                 }
 
@@ -250,9 +250,12 @@ class QuizCategory10 : AppCompatActivity() {
                         wrong=total-correct
                         radioButton04.setBackgroundColor(Color.RED)
                         radioButton04.isChecked=false
+                        Toast.makeText(this@QuizCategory10,"Correct Ans:$correctAns", Toast.LENGTH_SHORT).show()
+
                     }
                 }
             }
         })
     }
 }
+
