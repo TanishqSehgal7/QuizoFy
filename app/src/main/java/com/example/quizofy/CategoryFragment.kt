@@ -114,4 +114,9 @@ class CategoryFragment : Fragment() {
         mCtx = context;
     }
 
+    override fun onResume() {
+        super.onResume()
+        bottomnav.menu.findItem(R.id.home).isChecked = true
+    }
+
 }

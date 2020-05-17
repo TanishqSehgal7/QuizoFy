@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity(){
                 R.id.Theme -> {
                     val i=Intent(this,ThemeActivity::class.java)
                     startActivity(i)
-                    finish()
 //                    switchbwtweenfragments(ThemeFragment())
                     return@OnNavigationItemSelectedListener true
                 }
