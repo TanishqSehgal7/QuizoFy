@@ -7,23 +7,25 @@
     <TextView
         android:id="@+id/categorytv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CATEGORIES"
-        android:textStyle="bold"
-        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/bottomavcustom"
-        android:textColor="@android:color/black"
-        android:textSize="35sp"
-        android:layout_margin="10dp"
-        android:textAlignment="center"/>
+        android:padding="30dp"
+        android:text="Categories"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="70dp"
         android:clipToPadding="false">
 
         <LinearLayout
@@ -39,11 +41,10 @@
                 android:text="Art and Literature"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:background="@drawable/buttonroundforcategories"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz1"
                 android:padding="10dp"/>
 
             <Button
@@ -53,11 +54,10 @@
                 android:text="Geography"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz2"
                 android:padding="10dp"/>
 
             <Button
@@ -67,11 +67,10 @@
                 android:text="General Knowledge"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz3"
                 android:padding="10dp"/>
 
             <Button
@@ -81,11 +80,10 @@
                 android:text="History"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz4"
                 android:padding="10dp"/>
 
             <Button
@@ -95,11 +93,10 @@
                 android:text="Technology"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz5"
                 android:padding="10dp"/>
 
             <Button
@@ -109,11 +106,10 @@
                 android:text="Sports"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz6"
                 android:padding="10dp"/>
 
             <Button
@@ -123,11 +119,10 @@
                 android:text="Entertainment"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz7"
                 android:padding="10dp"/>
 
             <Button
@@ -137,11 +132,10 @@
                 android:text="Music"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz8"
                 android:padding="10dp"/>
 
             <Button
@@ -151,11 +145,10 @@
                 android:text="Sneaker Culture"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz9"
                 android:padding="10dp"/>
 
             <Button
@@ -165,11 +158,10 @@
                 android:text="Politics"
                 android:textSize="30dp"
                 android:textStyle="italic"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:background="@drawable/buttonroundforcategories"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_margin="10dp"
-                android:onClick="startQuiz10"
                 android:padding="10dp"/>
 
         </LinearLayout>
