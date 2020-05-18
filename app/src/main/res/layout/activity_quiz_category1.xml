@@ -54,28 +54,13 @@
         android:textColor="@android:color/white"
         android:textSize="25dp"
         android:textStyle="bold"
+        android:background="@drawable/stroke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.424"
         android:padding="20dp"/>
 
-    <RadioButton
-        android:id="@+id/radioButton11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Option1"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:textStyle="bold"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.208"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
 
     <RadioButton
         android:id="@+id/radioButton12"
@@ -86,6 +71,8 @@
         android:textSize="20dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.208"
@@ -101,6 +88,8 @@
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/categorycontrolbtns"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="NEXT->"
         android:textColor="@android:color/holo_orange_light"
         android:foreground="?android:attr/selectableItemBackground"
@@ -168,7 +157,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/categorycontrolbtns"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="START!"
         android:textColor="@android:color/holo_orange_light"
         android:foreground="?android:attr/selectableItemBackground"
@@ -180,6 +169,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.267" />
+
+    <RadioButton
+        android:id="@+id/radioButton11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Option1"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.592" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ class ResultActivity : AppCompatActivity() {
         if (ab!=null){
             ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
         }
-        Toast.makeText(this,"Tap Exit button to start browzing categories",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Tap Exit button to start browsing categories",Toast.LENGTH_SHORT).show()
 
         val bundle: Bundle? = intent.extras
         val corr: String? = bundle?.getString("correct")
@@ -25,7 +25,7 @@ class ResultActivity : AppCompatActivity() {
 
         correctAns.setText("Correct: "+ corr)
         wrongAns.setText("Wrong: " + wrng)
-        ScoreTotal.setText("Total Score:" + scor)
+        ScoreTotal.setText("Total Score: " + scor)
 
         closeBtn.setOnClickListener {
             exitTointroScreen()

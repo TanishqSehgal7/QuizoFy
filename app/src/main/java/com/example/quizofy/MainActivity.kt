@@ -67,10 +67,14 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         switchbwtweenfragments(categoryFragment)
 
-        val ab:ActionBar?=supportActionBar
-        if (ab != null) {
-            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
-        }
+
+//        val ab:ActionBar?=supportActionBar
+//        if (ab != null) {
+//            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
+//        }
+
+        runAnimationOnCategoryTv()
+
         Log.d("QuizCategory1","Main activity oncreate called")
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 

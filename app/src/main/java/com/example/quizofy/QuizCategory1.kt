@@ -108,6 +108,7 @@ class QuizCategory1 : AppCompatActivity() {
                 if ((1 + (milisUntilFinished / 1000))<=3){
                     textView3.setTextColor(Color.RED)
                 }
+
                 if (radioButton11.isChecked || radioButton12.isChecked || radioButton13.isChecked || radioButton14.isChecked){
                     radioButton11.isEnabled=false
                     radioButton12.isEnabled=false
