@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity(){
 //            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
 //        }
 
-        runAnimationOnCategoryTv()
 
         Log.d("QuizCategory1","Main activity oncreate called")
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
