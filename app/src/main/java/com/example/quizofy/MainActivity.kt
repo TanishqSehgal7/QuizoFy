@@ -107,10 +107,10 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val ab:ActionBar?=supportActionBar
-        if (ab != null) {
-            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
-        }
+//        val ab:ActionBar?=supportActionBar
+//        if (ab != null) {
+//            ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
+//        }
 
         runAnimationOnCategoryTv()
         Log.d("QuizCategory1","Main activity oncreate called")

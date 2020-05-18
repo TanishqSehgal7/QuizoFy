@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#0d132e"
     android:id="@+id/containFragment">
-   <TextView
-       android:id="@+id/categorytv"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="CATEGORIES"
-       android:textStyle="bold"
-       android:padding="10dp"
-       android:background="@drawable/bottomavcustom"
-       android:textColor="@android:color/black"
-       android:textSize="35dp"
-       android:layout_margin="10dp"
-       android:textAlignment="center"/>
+
+      <TextView
+          android:id="@+id/categorytv"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
+          android:background="@drawable/bottomavcustom"
+          android:padding="30dp"
+          android:text="Categories"
+          android:textAlignment="center"
+          android:textColor="@android:color/white"
+          android:textSize="35dp"
+          android:textStyle="bold" />
 
    <ScrollView
        android:id="@+id/scrollView1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:padding="10dp"
-       android:layout_marginTop="80dp"
-       android:layout_marginBottom="80dp"
+       android:layout_marginTop="70dp"
+       android:layout_marginBottom="70dp"
        android:clipToPadding="false">
 
       <LinearLayout
@@ -42,7 +45,7 @@
              android:text="Art and Literature"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:foreground="?android:attr/selectableItemBackground"
              android:background="@drawable/buttonroundforcategories"
              android:layout_margin="10dp"
@@ -56,7 +59,7 @@
              android:text="Geography"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -70,7 +73,7 @@
              android:text="General Knowledge"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -84,7 +87,7 @@
              android:text="History"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -98,7 +101,7 @@
              android:text="Technology"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -112,7 +115,7 @@
              android:text="Sports"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -126,7 +129,7 @@
              android:text="Entertainment"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -140,7 +143,7 @@
              android:text="Music"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -154,7 +157,7 @@
              android:text="Sneaker Culture"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -168,7 +171,7 @@
              android:text="Politics"
              android:textSize="30dp"
              android:textStyle="italic"
-             android:textColor="@android:color/white"
+             android:textColor="@android:color/black"
              android:background="@drawable/buttonroundforcategories"
              android:foreground="?android:attr/selectableItemBackground"
              android:layout_margin="10dp"
@@ -187,8 +190,8 @@
           android:layout_alignParentBottom="true"
           android:background="@drawable/bottomavcustom"
           android:foreground="?android:attr/selectableItemBackground"
-          app:itemIconTint="@android:color/black"
-          app:itemTextColor="@android:color/black"
+          app:itemIconTint="@android:color/white"
+          app:itemTextColor="@android:color/white"
           app:menu="@menu/navigation_menufile"
           android:padding="10dp"
           android:layout_marginLeft="40dp"
@@ -197,6 +200,8 @@
           app:labelVisibilityMode="labeled"
           android:focusableInTouchMode="true" />
 
+
+
    <FrameLayout
        android:id="@+id/frameLayout"
        android:layout_width="match_parent"
@@ -204,3 +209,4 @@
        android:layout_above="@+id/bottomNavigation"/>
 
 </RelativeLayout>
+
