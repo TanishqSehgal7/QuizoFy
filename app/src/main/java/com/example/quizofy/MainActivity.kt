@@ -31,70 +31,29 @@ const val EXTRA_MESSAGE = "com.example.quizofy.MESSEGE"
 
 
 class MainActivity : AppCompatActivity(){
+    val categoryFragment = CategoryFragment()
+    val notificationsFragment = NotificationsFragment()
+    val aboutAppFragment = AboutAppFragment()
+
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    c1.isClickable=true
-                    c2.isClickable=true
-                    c3.isClickable=true
-                    c4.isClickable=true
-                    c5.isClickable=true
-                    c6.isClickable=true
-                    c7.isClickable=true
-                    c8.isClickable=true
-                    c9.isClickable=true
-                    c10.isClickable=true
-                    startActivity(intent)
-                    finish()
-//                    switchbwtweenfragments(NotificationsFragment())
+                    switchbwtweenfragments(categoryFragment)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.notify -> {
-                    c1.isClickable=false
-                    c2.isClickable=false
-                    c3.isClickable=false
-                    c4.isClickable=false
-                    c5.isClickable=false
-                    c6.isClickable=false
-                    c7.isClickable=false
-                    c8.isClickable=false
-                    c9.isClickable=false
-                    c10.isClickable=false
-                    switchbwtweenfragments(NotificationsFragment())
-
+                    switchbwtweenfragments(notificationsFragment)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.Theme -> {
                     val i=Intent(this,ThemeActivity::class.java)
-                    c1.isClickable=false
-                    c2.isClickable=false
-                    c3.isClickable=false
-                    c4.isClickable=false
-                    c5.isClickable=false
-                    c6.isClickable=false
-                    c7.isClickable=false
-                    c8.isClickable=false
-                    c9.isClickable=false
-                    c10.isClickable=false
                     startActivity(i)
-                    finish()
 //                    switchbwtweenfragments(ThemeFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.aboutApp -> {
-                    c1.isClickable=false
-                    c2.isClickable=false
-                    c3.isClickable=false
-                    c4.isClickable=false
-                    c5.isClickable=false
-                    c6.isClickable=false
-                    c7.isClickable=false
-                    c8.isClickable=false
-                    c9.isClickable=false
-                    c10.isClickable=false
-                    switchbwtweenfragments(AboutAppFragment())
+                    switchbwtweenfragments(aboutAppFragment)
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -106,6 +65,8 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        switchbwtweenfragments(categoryFragment)
+
 
 //        val ab:ActionBar?=supportActionBar
 //        if (ab != null) {
@@ -113,6 +74,7 @@ class MainActivity : AppCompatActivity(){
 //        }
 
         runAnimationOnCategoryTv()
+
         Log.d("QuizCategory1","Main activity oncreate called")
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -120,73 +82,7 @@ class MainActivity : AppCompatActivity(){
 
 
     }
-   fun startQuiz1(view: View){
-           val button = findViewById<Button>(R.id.c1)
-           val intent = Intent(this, QuizCategory1::class.java)
-           startActivity(intent)
 
-   }
-
-    fun startQuiz2(view: View){
-            val button = findViewById<Button>(R.id.c2)
-            val intent = Intent(this, QuizCategory2::class.java)
-            startActivity(intent)
-
-    }
-    fun startQuiz3(view: View){
-            val button = findViewById<Button>(R.id.c3)
-            val intent = Intent(this, QuizCategory3::class.java)
-            startActivity(intent)
-
-    }
-
-    fun startQuiz4(view: View){
-            val button = findViewById<Button>(R.id.c4)
-            val intent = Intent(this, QuizCategory4::class.java)
-            startActivity(intent)
-
-    }
-
-    fun startQuiz5(view: View){
-            val button = findViewById<Button>(R.id.c5)
-            val intent = Intent(this, QuizCategory5::class.java)
-            startActivity(intent)
-
-    }
-
-    fun startQuiz6(view: View){
-            val button = findViewById<Button>(R.id.c6)
-            val intent = Intent(this, QuizCategory6::class.java)
-            startActivity(intent)
-
-    }
-
-    fun startQuiz7(view: View){
-            val button = findViewById<Button>(R.id.c7)
-            val intent = Intent(this, QuizCategory7::class.java)
-            startActivity(intent)
-
-    }
-    fun startQuiz8(view: View){
-        val button=findViewById<Button>(R.id.c8)
-        val intent=Intent(this,QuizCategory8::class.java)
-        startActivity(intent)
-
-    }
-
-    fun startQuiz9(view: View){
-            val button = findViewById<Button>(R.id.c9)
-            val intent = Intent(this, QuizCategory9::class.java)
-            startActivity(intent)
-
-    }
-
-    fun startQuiz10(view: View){
-            val button = findViewById<Button>(R.id.c10)
-            val intent = Intent(this, QuizCategory10::class.java)
-            startActivity(intent)
-
-    }
 
     fun switchbwtweenfragments(fragment: Fragment) {
 
@@ -199,22 +95,7 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    fun runAnimationOnCategoryTv(){
-        val animCategory=AnimationUtils.loadAnimation(this,R.anim.fadein)
-        //categorytv.startAnimation(animCategory)
-        c1.startAnimation(animCategory)
-        c2.startAnimation(animCategory)
-        c3.startAnimation(animCategory)
-        c4.startAnimation(animCategory)
-        c5.startAnimation(animCategory)
-        c6.startAnimation(animCategory)
-        c7.startAnimation(animCategory)
-        c8.startAnimation(animCategory)
-        c9.startAnimation(animCategory)
-        c10.startAnimation(animCategory)
-        bottomNavigation.startAnimation(animCategory)
 
-    }
 
 
 }

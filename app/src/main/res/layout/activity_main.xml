@@ -8,197 +8,20 @@
     tools:context=".MainActivity"
     android:id="@+id/containFragment">
 
-      <TextView
-          android:id="@+id/categorytv"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginStart="10dp"
-          android:layout_marginEnd="10dp"
-          android:layout_marginBottom="10dp"
-          android:background="@drawable/bottomavcustom"
-          android:padding="30dp"
-          android:text="Categories"
-          android:textAlignment="center"
-          android:textColor="@android:color/white"
-          android:textSize="35dp"
-          android:textStyle="bold" />
-
-   <ScrollView
-       android:id="@+id/scrollView1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:padding="10dp"
-       android:layout_marginTop="70dp"
-       android:layout_marginBottom="70dp"
-       android:clipToPadding="false">
-
-      <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:padding="20dp">
-
-         <Button
-             android:id="@+id/c1"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Art and Literature"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:background="@drawable/buttonroundforcategories"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz1"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c2"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Geography"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz2"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c3"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="General Knowledge"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz3"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c4"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="History"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz4"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c5"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Technology"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz5"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c6"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Sports"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz6"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c7"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Entertainment"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz7"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c8"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Music"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz8"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c9"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Sneaker Culture"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz9"
-             android:padding="10dp"/>
-
-         <Button
-             android:id="@+id/c10"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Politics"
-             android:textSize="30dp"
-             android:textStyle="italic"
-             android:textColor="@android:color/black"
-             android:background="@drawable/buttonroundforcategories"
-             android:foreground="?android:attr/selectableItemBackground"
-             android:layout_margin="10dp"
-             android:onClick="startQuiz10"
-             android:padding="10dp"/>
-
-      </LinearLayout>
-   </ScrollView>
-
       <com.google.android.material.bottomnavigation.BottomNavigationView
           android:id="@+id/bottomNavigation"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignParentStart="true"
-          android:layout_alignParentEnd="true"
           android:layout_alignParentBottom="true"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
           android:background="@drawable/bottomavcustom"
-          android:foreground="?android:attr/selectableItemBackground"
-          app:itemIconTint="@android:color/white"
-          app:itemTextColor="@android:color/white"
+          app:itemTextColor="@drawable/nav_selector"
+          app:itemIconTint="@drawable/nav_selector"
           app:menu="@menu/navigation_menufile"
           android:padding="10dp"
-          android:layout_marginLeft="40dp"
-          android:layout_marginRight="40dp"
           android:layout_margin="10dp"
-          app:labelVisibilityMode="labeled"
-          android:focusableInTouchMode="true" />
+          app:labelVisibilityMode="labeled" />
 
 
 
