@@ -43,6 +43,22 @@ class AboutAppFragment : Fragment() {
             startActivity(Intent.createChooser(emailIntent, "Send email..."))
         }
 
+        val linkedInbtn=view.findViewById<Button>(R.id.linked)
+        linkedInbtn.setOnClickListener {
+            val i = Intent()
+            i.action = Intent.ACTION_VIEW
+            i.data = Uri.parse("https://www.linkedin.com/in/tanishq-sehgal-a86bbb184")
+            startActivity(i)
+        }
+
+        val githubBtn=view.findViewById<Button>(R.id.github)
+        githubBtn.setOnClickListener {
+            val i =Intent()
+            i.action = Intent.ACTION_VIEW
+            i.data = Uri.parse("https://github.com/TanishqSehgal7")
+            startActivity(i)
+        }
+
 
         return view
     }
