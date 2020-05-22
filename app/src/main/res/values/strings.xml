@@ -11,4 +11,10 @@
         <item>Light</item>
     </string-array>
 
+    <string name="text_with_paragraphs">
+        QuizoFy\n\nQuizoFy is a basic app that fetches it database from Firebase.
+        This app aims to let the user play Quizzes in different categories lie Art and Literature,History,Politics,\nTechnology etc.
+        This app is developed by Tanishq Sehgal persuing B.TECH from Bharati Vidyapeeth College of Engineering.\n\n
+    </string>
+
 </resources>
