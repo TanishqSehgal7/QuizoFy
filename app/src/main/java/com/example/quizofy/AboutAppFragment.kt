@@ -58,8 +58,6 @@ class AboutAppFragment : Fragment() {
             i.data = Uri.parse("https://github.com/TanishqSehgal7")
             startActivity(i)
         }
-
-
         return view
     }
     override fun onResume() {
