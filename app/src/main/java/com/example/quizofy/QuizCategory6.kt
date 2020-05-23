@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_quiz_category6.*
 import kotlinx.android.synthetic.main.activity_quiz_category6.textView5
 import kotlinx.android.synthetic.main.activity_quiz_category9.*
 import kotlinx.android.synthetic.main.activity_result.*
+import kotlinx.android.synthetic.main.activity_theme.*
 
 class QuizCategory6 : AppCompatActivity() {
     var correct=0
@@ -37,6 +38,7 @@ class QuizCategory6 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category6)
+        textView5.visibility=View.INVISIBLE
         val ab: ActionBar?=supportActionBar
         if (ab!=null){
             ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
@@ -178,6 +180,7 @@ class QuizCategory6 : AppCompatActivity() {
             Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
             submitButton6.setOnClickListener {
                 resultKaIntent()
+                finish()
             }
         } else
         {
@@ -195,6 +198,7 @@ class QuizCategory6 : AppCompatActivity() {
                     val quesNo=total.toString()
                     val anim= AnimationUtils.loadAnimation(this@QuizCategory6,R.anim.slide_down)
                     textView5.startAnimation(anim)
+                    textView5.visibility=View.VISIBLE
                     textView5.setText(quesNo+". "+questionText)
                     radioButton61.startAnimation(anim)
                     radioButton61.setText(option1Text)

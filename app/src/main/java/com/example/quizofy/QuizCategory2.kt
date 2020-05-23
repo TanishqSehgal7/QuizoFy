@@ -35,6 +35,7 @@ class QuizCategory2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category2)
+        textView5.visibility=View.INVISIBLE
         val ab: ActionBar?=supportActionBar
         if (ab!=null){
             ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
@@ -187,6 +188,7 @@ class QuizCategory2 : AppCompatActivity() {
                     val quesNo=total.toString()
                     val anim= AnimationUtils.loadAnimation(this@QuizCategory2,R.anim.slide_down)
                     textView5.startAnimation(anim)
+                    textView5.visibility=View.VISIBLE
                     textView5.setText(quesNo+". "+questionText)
                     radioButton21.startAnimation(anim)
                     radioButton21.setText(option1Text)

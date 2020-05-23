@@ -48,7 +48,7 @@ class CategoryFragment : Fragment() {
         c8 = view.findViewById(R.id.c8)
         c9 = view.findViewById(R.id.c9)
         c10 = view.findViewById(R.id.c10)
-        runAnimationOnCategoryTv()
+//        runAnimationOnCategoryTv()
         c1.setOnClickListener{
             val intent = Intent(mCtx, QuizCategory1::class.java)
             startActivity(intent)

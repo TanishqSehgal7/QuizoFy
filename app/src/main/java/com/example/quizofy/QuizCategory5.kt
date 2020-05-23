@@ -36,6 +36,7 @@ class QuizCategory5 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category5)
+        textView5.visibility=View.INVISIBLE
         val ab: ActionBar?=supportActionBar
         if (ab!=null){
             ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
@@ -177,6 +178,7 @@ class QuizCategory5 : AppCompatActivity() {
             Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
             submitButton5.setOnClickListener {
                 resultKaIntent()
+                finish()
             }
         } else
         {
@@ -192,12 +194,14 @@ class QuizCategory5 : AppCompatActivity() {
                     val option4Text=dataSnapshot.child("option4").getValue().toString()
                     val questionText=dataSnapshot.child("question").getValue().toString()
                     val quesNo=total.toString()
+                    val anim= AnimationUtils.loadAnimation(this@QuizCategory5,R.anim.slide_down)
+                    textView5.startAnimation(anim)
+                    textView5.visibility=View.VISIBLE
                     textView5.setText(quesNo+". "+questionText)
                     radioButton51.setText(option1Text)
                     radioButton52.setText(option2Text)
                     radioButton53.setText(option3Text)
                     radioButton54.setText(option4Text)
-
                 }
                 override fun onCancelled(p0: DatabaseError) {
                     Log.e("QuizCategory5","Something Went Wrong!!")

@@ -36,6 +36,7 @@ class QuizCategory4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_category4)
+        textView5.visibility=View.INVISIBLE
         val ab: ActionBar?=supportActionBar
         if (ab!=null){
             ab.setBackgroundDrawable(getDrawable(R.drawable.actionbargrag))
@@ -177,6 +178,7 @@ class QuizCategory4 : AppCompatActivity() {
             Toast.makeText(this,"Press Submit button to view the result",Toast.LENGTH_SHORT).show()
             submitButton4.setOnClickListener {
                 resultKaIntent()
+                finish()
             }
         } else
         {
@@ -194,6 +196,7 @@ class QuizCategory4 : AppCompatActivity() {
                     val quesNo=total.toString()
                     val anim= AnimationUtils.loadAnimation(this@QuizCategory4,R.anim.slide_down)
                     textView5.startAnimation(anim)
+                    textView5.visibility=View.VISIBLE
                     textView5.setText(quesNo+". "+questionText)
                     radioButton41.startAnimation(anim)
                     radioButton41.setText(option1Text)
